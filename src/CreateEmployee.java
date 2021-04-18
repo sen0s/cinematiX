@@ -13,7 +13,7 @@ public class CreateEmployee extends JFrame implements ActionListener {
 		
 		this.setSize(350,320);
 		this.setIconImage(icon.getImage());
-		this.setContentPane(Panel);
+		//this.setContentPane(panel);
 		this.setVisible(true);
 		
 		this.setResizable(false);
