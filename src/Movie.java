@@ -5,7 +5,8 @@ public class Movie {
     private String duration;
     private String genre;
     private ArrayList<String> date_time = new ArrayList<>();
-    
+
+    Movie(){}
     
     Movie(String title, String duration, String genre){
         this.title = title;
