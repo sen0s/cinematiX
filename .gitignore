@@ -1,0 +1,6 @@
+# no .idea folder
+/.idea/
+
+# no .iml files
+*.iml
+/bin/
