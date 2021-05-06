@@ -6,8 +6,9 @@ import javax.swing.border.Border;
 
 public class EmployeeScreen  extends JFrame implements ActionListener{
 	JLabel Movie_entry,Ticket_res,Res_del,del_movie,Welcome_msg,Employye_tool;
-	JButton insert_mv,ticket_res,res_del,movie_del,back,exit;
+	JButton insert_mv,ticket_res,res_del,movie_del,back;
 	JPanel Panel,panel1,panel2,panel3,panel4;
+	JFrame JFrame = this;
 	
 
 	EmployeeScreen(){
@@ -26,12 +27,13 @@ public class EmployeeScreen  extends JFrame implements ActionListener{
 						Welcome_msg =  new JLabel("");
 							Employye_tool =  new JLabel("EMPLOYEE TOOLS",Employye_tool.CENTER);
 		
-	    insert_mv = new JButton("ISERT MOVIE");
+	    insert_mv = new JButton("INSERT MOVIE");
 	    	ticket_res = new JButton("TICKET RES");
+	    	
 	    		res_del =  new JButton("DEL.RESERVATION");
 	 	  			movie_del = new JButton("DELETE MOVIE");	    			
 	    				back =  new JButton("Back");	    				
-	    					exit = new JButton("Exit");
+	    					
 	    					
 	   panel1.setBackground(Color.white); 
 	   panel1.setPreferredSize(new Dimension(50,50));
@@ -58,10 +60,15 @@ public class EmployeeScreen  extends JFrame implements ActionListener{
 	    
 	    panel3.setBackground(Color.white);
 		panel3.add(back,BorderLayout.WEST);
-			panel3.add(exit,BorderLayout.EAST);
-				Panel.add(panel3,BorderLayout.SOUTH);
-	    					
+		Panel.add(panel3,BorderLayout.SOUTH);
 	    
+		ButtonListener listener = new ButtonListener();
+		insert_mv.addActionListener(listener);
+		ticket_res.addActionListener(listener);
+		res_del.addActionListener(listener);
+		movie_del.addActionListener(listener);
+		back.addActionListener(listener);
+		
 		ImageIcon  icon = new ImageIcon("cinema-logo_23-2147503279.jpg");
 		this.setSize(400,300);
 		this.setIconImage(icon.getImage());
@@ -70,13 +77,32 @@ public class EmployeeScreen  extends JFrame implements ActionListener{
 		this.setVisible(true);
 		this.setResizable(false);
 		this.setTitle("Employee's tools screen");
-		this.setDefaultCloseOperation(MainFrame.EXIT_ON_CLOSE);	
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+
+	class ButtonListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if ( e.getSource().equals(insert_mv) ) {
+				new AddMovie();
+			}
+			if ( e.getSource().equals(ticket_res) ){
+				new BookTicketGUI();
+			}
+			if ( e.getSource().equals(res_del) ) {
+				
+			}
+			if ( e.getSource().equals(movie_del) ) {
+				new DeleteMovieFrame();
+			}
+			if ( e.getSource().equals(back) ) {
+				JFrame.dispose();
+			}
 		
+		}
 	}
+	
 
 }

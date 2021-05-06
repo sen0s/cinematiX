@@ -22,7 +22,7 @@ public class DeleteMovieFrame extends JFrame {
 		this.setContentPane(panel);
 		this.setVisible(true);
 		this.setSize(400, 200);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
 }

@@ -5,14 +5,17 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import EmployeeLogIn.ButtonListener;
+
 
 
 
 public class AdminLogIn extends JFrame implements ActionListener {
-	private JButton LogIn,Back,Exit;
+	private JButton LogIn,Back;
 	private JLabel Username,Password,Title;
 	private JTextField UserName1,Password1;
 	private JPanel Panel,panel1,panel2,panel3;
+	private JFrame JFrame = this;
 	
 	AdminLogIn(){
 		Panel = new JPanel(new BorderLayout());
@@ -23,7 +26,6 @@ public class AdminLogIn extends JFrame implements ActionListener {
 		LogIn =  new JButton("LogIn");
 			LogIn.setPreferredSize(new Dimension(80,30));
 			Back = new JButton("Back");
-				Exit = new JButton("Exit");
 		
 		Username = new JLabel("Username:");
 			Password = new JLabel("Password:");
@@ -48,10 +50,11 @@ public class AdminLogIn extends JFrame implements ActionListener {
 								
 		panel3.setBackground(Color.white);
 			panel3.add(Back,BorderLayout.WEST);
-				panel3.add(Exit,BorderLayout.EAST);
-					Panel.add(panel3,BorderLayout.SOUTH);
+				Panel.add(panel3,BorderLayout.SOUTH);
 		
-		
+		ButtonListener listener = new ButtonListener();
+		LogIn.addActionListener(listener);
+		Back.addActionListener(listener);
 		
 		
 		ImageIcon  icon = new ImageIcon("cinema-logo_23-2147503279.jpg");
@@ -61,11 +64,19 @@ public class AdminLogIn extends JFrame implements ActionListener {
 		this.setVisible(true);
 		this.setResizable(false);
 		this.setTitle("ADMINISTRATRO  LOG IN SCREEN");
-		this.setDefaultCloseOperation(MainFrame.EXIT_ON_CLOSE);		
-	}
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);		
 		
-
+	class ButtonListener implements ActionListener
+	{
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if ( e.getSource().equals(LogIn) ){
+					new AdminGUI();
+				}
+				if ( e.getSource().equals(Back) ){
+					JFrame.dispose();
+				}
+			}
+	}
 }
 }

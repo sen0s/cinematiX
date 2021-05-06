@@ -27,7 +27,7 @@ public class AddMovie extends JInternalFrame {
         newMovie = new Movie();
 
         JFrame frame = new JFrame("Insert Movie");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(420, 420);
         frame.setLocation(300, 200);
         JPanel panel = (JPanel) frame.getContentPane();
@@ -112,6 +112,12 @@ public class AddMovie extends JInternalFrame {
         buttonExit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
+            }
+        });
+        
+        buttonBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent f) {
+                this.dispose();
             }
         });
 

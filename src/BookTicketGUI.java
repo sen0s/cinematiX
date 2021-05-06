@@ -18,14 +18,14 @@ public class BookTicketGUI extends JFrame {
 	private JLabel nameL = new JLabel(" Ονoμ/μο: ");
 	private JComboBox movies = new JComboBox();
 	private JComboBox seats = new JComboBox();
-	private JButton backButton = new JButton("’κυρο");
+	private JButton backButton = new JButton("Πίσω");
 	private JButton bookButton = new JButton("Κράτηση");
 	private JTextField roomField= new JTextField(" ");
 	private JTextField nameField= new JTextField(" ");
-	private JCheckBox normalT = new JCheckBox("Κανονικό");
-	private JCheckBox childT = new JCheckBox("Παιδικό");
-	private JCheckBox studentT = new JCheckBox("Φοιτητικό");
-	private JCheckBox multiT = new JCheckBox("Πολυτεκνικο");
+	private JRadioButton normalT = new JRadioButton("Κανονικό");
+	private JRadioButton childT = new JRadioButton("Παιδικό");
+	private JRadioButton studentT = new JRadioButton("Φοιτητικό");
+	private JRadioButton multiT = new JRadioButton("Πολυτεκνικο");
 	private JPanel panel_1 = new JPanel();
 	private JPanel panel_2 = new JPanel();
 	private JPanel panel_3 = new JPanel();
@@ -64,11 +64,11 @@ public class BookTicketGUI extends JFrame {
 		frame.add(panel_3, BorderLayout.SOUTH);
 		
 
-		/*
+		
 		ButtonListener listener = new ButtonListener();
 		bookButton.addActionListener(listener);
 		backButton.addActionListener(listener);
-		*/
+		
 		
 		frame.setIconImage(img.getImage());
 		
@@ -76,8 +76,7 @@ public class BookTicketGUI extends JFrame {
 		frame.setResizable(false);
 		frame.setSize(500,230);
 		frame.setTitle("Κράτηση Εισητηρίου");
-		//.getContentPane().setBackground(Color.DARK_GRAY);
-		frame.setDefaultCloseOperation(BookTicketGUI.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 	}
 	
@@ -87,26 +86,16 @@ public class BookTicketGUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if ( e.getSource().equals(bookButton) ){
-				
+				if(normalT.isSelected()) {
+					System.out.println("Normal");
+				}
+				//new Reservation();
 			}
 			else if ( e.getSource().equals(backButton) ){
-				//new First_Gui();
+				frame.dispose();
 			}
 		}
 		
 	}
 	
-	class CheckboxAction extends AbstractAction {
-	    public CheckboxAction(String text) {
-	        super(text);
-	    }
-	 
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-	        JCheckBox cbLog = (JCheckBox) e.getSource();
-	        if (cbLog.isSelected()) {
-	            
-	        } 
-	    }
-	}
 }
