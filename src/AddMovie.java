@@ -16,6 +16,7 @@ public class AddMovie extends JInternalFrame {
 
     private Movie newMovie;
     private ArrayList<Movie> movies = new ArrayList<>();
+    private JInternalFrame frame = this;
 
    /* public static void main(String[] args) {
         new AddMovie();
@@ -117,7 +118,7 @@ public class AddMovie extends JInternalFrame {
         
         buttonBack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent f) {
-                this.dispose();
+                frame.dispose();
             }
         });
 

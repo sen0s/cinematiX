@@ -12,25 +12,39 @@ import javax.swing.*;
 public class AdminGUI extends JFrame{
 	
 	
-	private JLabel WelcomeBackL = new JLabel("Welcome back!!!"
-			);
-	private JLabel AdminToolsL = new JLabel("Admin tools");
-	private JLabel CreateL = new JLabel("Create an employee account:");
-	private JButton CreateB = new JButton("Create");
-	private JLabel DeleteL = new JLabel("Delete empoyee's account:");
-	private JButton DeleteB = new JButton("Delete");
-	private JLabel StatisticsL = new JLabel("Show statistics of cinema:");
-	private JButton StatisticsB = new JButton("Stats");
-	private JButton BackB = new JButton("Back");
-	private JPanel panel_1 = new JPanel();
-	private JPanel panel_2 = new JPanel();
-	private JPanel panel_3 = new JPanel();
-	private JPanel panel_4 = new JPanel();
-	private JFrame frame = new JFrame();
+	private JLabel WelcomeBackL;
+	private JLabel AdminToolsL;
+	private JLabel CreateL;
+	private JButton CreateB;
+	private JLabel DeleteL;
+	private JButton DeleteB;
+	private JLabel StatisticsL;
+	private JButton StatisticsB;
+	private JButton BackB;
+	private JPanel panel_1;
+	private JPanel panel_2;
+	private JPanel panel_3;
+	private JPanel panel_4;
+	private JFrame frame;
 	
 	
 	public AdminGUI()
 	{
+
+		WelcomeBackL = new JLabel("Welcome back!!!");
+		AdminToolsL = new JLabel("Admin tools");
+		CreateL = new JLabel("Create an employee account:");
+		CreateB = new JButton("Create");
+		DeleteL = new JLabel("Delete empoyee's account:");
+		DeleteB = new JButton("Delete");
+		StatisticsL = new JLabel("Show statistics of cinema:");
+		StatisticsB = new JButton("Stats");
+		BackB = new JButton("Log out");
+		panel_1 = new JPanel();
+		panel_2 = new JPanel();
+		panel_3 = new JPanel();
+		panel_4 = new JPanel();
+		frame = new JFrame();
 	
 		Font font_1 = new Font(null, Font.BOLD,20);
 		WelcomeBackL.setFont(font_1);
@@ -83,30 +97,32 @@ public class AdminGUI extends JFrame{
 		frame.setResizable(false);
 		frame.setSize(400,360);
 		frame.setTitle("Admin Screen");
-		frame.setDefaultCloseOperation(AdminGUI.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 	}
 	
-	class ButtonListener implements ActionListener
-	{
+	class ButtonListener implements ActionListener {
+
+
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
 			if (e.getSource().equals(CreateB))
 			{
-				
+
 			}
 			else if (e.getSource().equals(DeleteB))
 			{
-				
+
 			}
 			else if (e.getSource().equals(StatisticsB))
 			{
-				
+
 			}
 			else if (e.getSource().equals(BackB))
 			{
-				frame.setVisible(false);
+				frame.dispose();
+				new AdminLogIn();
 			}
 		
 			

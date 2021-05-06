@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class MainFrame  extends JFrame implements ActionListener{
+public class MainFrame  extends JFrame {
 	
 	// Δηλωση των γραφικων στοιχειων που θα χρειαστουν για το gui 
 	private JPanel Panel ,Panel1,Panel2,Panel3,Panel4,Panel5,Panel6;
@@ -101,10 +101,10 @@ public class MainFrame  extends JFrame implements ActionListener{
 	{
 		public void actionPerformed(ActionEvent e) {
 			if ( e.getSource().equals(Login1) ){
-				new AdminLogIn();
+				new EmployeeLogIn();
 			}
 			if ( e.getSource().equals(Login2) ){
-				new EmployeeLogIn();
+				new AdminLogIn();
 			}
 			if ( e.getSource().equals(EXIT) ){
 				System.exit(1);

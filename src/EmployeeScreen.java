@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-public class EmployeeScreen  extends JFrame implements ActionListener{
+public class EmployeeScreen  extends JFrame {
 	JLabel Movie_entry,Ticket_res,Res_del,del_movie,Welcome_msg,Employye_tool;
 	JButton insert_mv,ticket_res,res_del,movie_del,back;
 	JPanel Panel,panel1,panel2,panel3,panel4;
@@ -32,7 +32,7 @@ public class EmployeeScreen  extends JFrame implements ActionListener{
 	    	
 	    		res_del =  new JButton("DEL.RESERVATION");
 	 	  			movie_del = new JButton("DELETE MOVIE");	    			
-	    				back =  new JButton("Back");	    				
+	    				back =  new JButton("Log out");
 	    					
 	    					
 	   panel1.setBackground(Color.white); 
@@ -99,6 +99,7 @@ public class EmployeeScreen  extends JFrame implements ActionListener{
 			}
 			if ( e.getSource().equals(back) ) {
 				JFrame.dispose();
+				new EmployeeLogIn();
 			}
 		
 		}

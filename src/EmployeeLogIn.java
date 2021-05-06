@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-public class EmployeeLogIn extends JFrame implements ActionListener {
+public class EmployeeLogIn extends JFrame {
 	private JButton LogIn,Back;
 	private JLabel Username,Password,Title;
 	private JTextField UserName1,Password1;
@@ -58,7 +58,7 @@ public class EmployeeLogIn extends JFrame implements ActionListener {
 		this.setContentPane(Panel);
 		this.setVisible(true);
 		this.setResizable(false);
-		this.setTitle("ADMINISTRATRO  LOG IN SCREEN");
+		this.setTitle("EMPLOYEE LOG IN SCREEN");
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);		
 	}
 	class ButtonListener implements ActionListener
@@ -67,6 +67,7 @@ public class EmployeeLogIn extends JFrame implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if ( e.getSource().equals(LogIn) ){
 				new EmployeeScreen();
+				JFrame.dispose();
 			}
 			if ( e.getSource().equals(Back) ){
 				JFrame.dispose();
