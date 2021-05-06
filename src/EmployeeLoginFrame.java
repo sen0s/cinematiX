@@ -2,16 +2,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import javax.swing.border.Border;
 
-public class EmployeeLogIn extends JFrame {
+public class EmployeeLoginFrame extends JFrame {
 	private JButton LogIn,Back;
 	private JLabel Username,Password,Title;
 	private JTextField UserName1,Password1;
 	private JPanel Panel,panel1,panel2,panel3;
 	private JFrame JFrame = this;
 	
-	EmployeeLogIn(){
+	EmployeeLoginFrame(){
 		Panel = new JPanel(new BorderLayout());
 			panel1 =  new JPanel();
 				panel2 = new JPanel(new FlowLayout());
@@ -58,7 +57,8 @@ public class EmployeeLogIn extends JFrame {
 		this.setContentPane(Panel);
 		this.setVisible(true);
 		this.setResizable(false);
-		this.setTitle("EMPLOYEE LOG IN SCREEN");
+		this.setTitle("Είσοδος Υπαλλήλου");
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);		
 	}
 	class ButtonListener implements ActionListener
@@ -66,7 +66,7 @@ public class EmployeeLogIn extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if ( e.getSource().equals(LogIn) ){
-				new EmployeeScreen();
+				new EmployeeFrame();
 				JFrame.dispose();
 			}
 			if ( e.getSource().equals(Back) ){

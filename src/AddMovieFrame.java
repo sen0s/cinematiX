@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-public class AddMovie extends JInternalFrame {
+public class AddMovieFrame extends JInternalFrame {
 
     JButton buttonInsert;
     JButton buttonExit;
@@ -23,7 +23,7 @@ public class AddMovie extends JInternalFrame {
 
     }*/
 
-    public AddMovie() {
+    public AddMovieFrame() {
 
         newMovie = new Movie();
 

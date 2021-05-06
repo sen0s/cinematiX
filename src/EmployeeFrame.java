@@ -2,16 +2,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import javax.swing.border.Border;
 
-public class EmployeeScreen  extends JFrame {
+public class EmployeeFrame extends JFrame {
 	JLabel Movie_entry,Ticket_res,Res_del,del_movie,Welcome_msg,Employye_tool;
 	JButton insert_mv,ticket_res,res_del,movie_del,back;
 	JPanel Panel,panel1,panel2,panel3,panel4;
 	JFrame JFrame = this;
 	
 
-	EmployeeScreen(){
+	EmployeeFrame(){
 		Panel = new JPanel(new BorderLayout());
 			panel1 =  new JPanel();
 				panel2 = new JPanel(new GridLayout(4,2,10,10));
@@ -86,10 +85,10 @@ public class EmployeeScreen  extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if ( e.getSource().equals(insert_mv) ) {
-				new AddMovie();
+				new AddMovieFrame();
 			}
 			if ( e.getSource().equals(ticket_res) ){
-				new BookTicketGUI();
+				new BookTicketFrame();
 			}
 			if ( e.getSource().equals(res_del) ) {
 				
@@ -99,7 +98,7 @@ public class EmployeeScreen  extends JFrame {
 			}
 			if ( e.getSource().equals(back) ) {
 				JFrame.dispose();
-				new EmployeeLogIn();
+				new EmployeeLoginFrame();
 			}
 		
 		}
