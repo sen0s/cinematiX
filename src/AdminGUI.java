@@ -109,11 +109,11 @@ public class AdminGUI extends JFrame{
 		{
 			if (e.getSource().equals(CreateB))
 			{
-
+               new CreateEmployee();
 			}
 			else if (e.getSource().equals(DeleteB))
 			{
-
+               new DeleteEmployee();
 			}
 			else if (e.getSource().equals(StatisticsB))
 			{
