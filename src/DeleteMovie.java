@@ -54,10 +54,11 @@ public class DeleteMovie extends JFrame {
                     for(int i=0; i<AllMovies.allMovies.size(); i++){
                         if(AllMovies.allMovies.get(i).getTitle() == title){
                             AllMovies.allMovies.remove(i);
+                            JOptionPane.showMessageDialog(null, "Movie deleted Successfully");
                         }
                     }
 
-                    JOptionPane.showMessageDialog(null, "Movie deleted Successfully");
+
 
                 } catch (Exception e1) {
                     JOptionPane.showMessageDialog(null, e1);
