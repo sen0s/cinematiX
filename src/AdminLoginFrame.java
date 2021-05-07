@@ -65,7 +65,7 @@ public class AdminLoginFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if ( e.getSource().equals(loginBtn) ){
-					new AdminGUI();
+					new AdminFrame();
 					frame.dispose();
 				}
 				if ( e.getSource().equals(abortBtn) ){

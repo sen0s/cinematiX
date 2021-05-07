@@ -19,7 +19,6 @@ public class MainFrame  extends JFrame {
 		 */
 
 		mainPanel = new JPanel();
-		mainPanel.setLayout(new BorderLayout(20,20));
 		panel1 =  new JPanel();
 		panel2 = new JPanel();
 		panel3 = new JPanel();
@@ -37,28 +36,33 @@ public class MainFrame  extends JFrame {
 		 * δεσμευση-αρχικοποιηση των JLabels και καθοριμσος των ΤΧΤ-FOREGROUND-BACKGROUND
 		 */
 
-		title = new JLabel();
-		title.setText("Σύστημα Διαχείρησης Κινιματογράφου");
-		title.setForeground(Color.black);
+		title = new JLabel("Σύστημα Διαχείρησης Κινιματογράφου");
+
 
 		/*
 		 * Προσθηκη γραφικων στοιχειων στα αντιστοιχα JPanel και καθορισμος θεσης
 		 */
 
-		panel1.add(title, panel1.CENTER_ALIGNMENT);
+		mainPanel.setLayout(null);
+		panel1.setPreferredSize(new Dimension(280,25));
+		panel1.setBounds(0,0,280,25);
+		panel2.setBounds(0,35,280,70);
+		panel3.setBounds(0,110,280,30);
+
+		panel1.add(title);
 
 		panel2.add(employeeLoginBtn);
 		panel2.add(adminLoginBtn);
 
-		panel3.add(exitBtn, panel3.CENTER_ALIGNMENT);
+		panel3.add(exitBtn);
 			
 		/*
 		 * ΠΡΟΣΘΗΚΗ ΤΩΝ PANEL1-6 ΣΤΟΝ ΚΥΡΙΟ ΠΑΝΕΛ (JPanel)
 		 */
 
-		mainPanel.add(panel1, BorderLayout.NORTH);
-		mainPanel.add(panel2, BorderLayout.CENTER);
-		mainPanel.add(panel3, BorderLayout.SOUTH);
+		mainPanel.add(panel1);
+		mainPanel.add(panel2);
+		mainPanel.add(panel3);
 
 
 		employeeLoginBtn.addActionListener(listener);
@@ -67,7 +71,7 @@ public class MainFrame  extends JFrame {
 		
 		ImageIcon icon = new ImageIcon("cinema_logo.jpg");
 		
-		this.setSize(350,200);
+		this.setSize(280,180);
 		this.setIconImage(icon.getImage());
 		this.setContentPane(mainPanel);
 		this.setVisible(true);
