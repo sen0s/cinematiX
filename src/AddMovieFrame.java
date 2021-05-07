@@ -1,10 +1,11 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class AddMovie extends JInternalFrame {
+import javax.swing.*;
+
+public class AddMovieFrame extends JInternalFrame {
 
     JButton buttonInsert;
     JButton buttonExit;
@@ -15,19 +16,19 @@ public class AddMovie extends JInternalFrame {
 
     private Movie newMovie;
     private ArrayList<Movie> movies = new ArrayList<>();
+    private JInternalFrame frame = this;
 
-
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         new AddMovie();
 
-    }
+    }*/
 
-    public AddMovie() {
+    public AddMovieFrame() {
 
         newMovie = new Movie();
 
         JFrame frame = new JFrame("Insert Movie");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(420, 420);
         frame.setLocation(300, 200);
         JPanel panel = (JPanel) frame.getContentPane();
@@ -85,11 +86,6 @@ public class AddMovie extends JInternalFrame {
         buttonBack.setSize(80, 25);
         panel.add(buttonBack);
 
-        JButton DeleteButton = new JButton("Delete");
-        DeleteButton.setLocation(170, 250);
-        DeleteButton.setSize(100, 30);
-        panel.add(DeleteButton);
-
         buttonInsert.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -99,10 +95,8 @@ public class AddMovie extends JInternalFrame {
                     title = tfTitle.getText();
                     duration = tfDuration.getText();
                     genre = (String) comboBox.getSelectedItem();
-
                     newMovie = new Movie(title,duration,genre);
-
-                    AllMovies.allMovies.add(newMovie);
+                    movies.add(newMovie);
 
                     JOptionPane.showMessageDialog(null, "Movie inserted Successfully");
 
@@ -121,14 +115,12 @@ public class AddMovie extends JInternalFrame {
                 System.exit(0);
             }
         });
-
-        DeleteButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new DeleteMovie();
+        
+        buttonBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent f) {
+                frame.dispose();
             }
         });
-
-
 
         frame.setVisible(true);
     }

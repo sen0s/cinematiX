@@ -6,7 +6,7 @@ import javax.swing.*;
 
 import com.formdev.flatlaf.FlatLightLaf;
 
-public class BookTicketGUI extends JFrame {
+public class BookTicketFrame extends JFrame {
 	
 	//private ArrayLit<Movie> filmList = new ArrayList<Movie>();
 	private String name;
@@ -34,7 +34,7 @@ public class BookTicketGUI extends JFrame {
 	private ImageIcon img= new ImageIcon("ticket icon.png");
 	
 	
-	public BookTicketGUI() {
+	public BookTicketFrame() {
 		
 		
 		
