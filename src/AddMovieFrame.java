@@ -6,20 +6,12 @@ import java.util.ArrayList;
 
 public class AddMovie extends JInternalFrame {
 
-    JButton buttonInsert;
-    JButton buttonExit;
-    JButton buttonBack;
-    JTextField tfTitle;
-    JTextField tfDuration;
-    JComboBox comboBox;
-
     private Movie newMovie;
     private ArrayList<Movie> movies = new ArrayList<>();
 
 
     public static void main(String[] args) {
         new AddMovie();
-
     }
 
     public AddMovie() {
@@ -54,33 +46,33 @@ public class AddMovie extends JInternalFrame {
         Dimension size4 = label4.getPreferredSize();
         label4.setBounds(67, 165, size4.width, size4.height);
 
-        tfTitle = new JTextField();
+        JTextField tfTitle = new JTextField();
         tfTitle.setLocation(150, 88);
         tfTitle.setSize(150, 25);
         panel.add(tfTitle);
 
-        tfDuration = new JTextField();
+        JTextField tfDuration = new JTextField();
         tfDuration.setLocation(150, 160);
         tfDuration.setSize(150, 25);
         panel.add(tfDuration);
 
         String[] genres =  {"Action","Comedy","Drama","Fantasy","Horror","Mystery","Romance","Thriller"};
-        comboBox = new JComboBox(genres);
+        JComboBox comboBox = new JComboBox(genres);
         comboBox.setLocation(150, 125);
         comboBox.setSize(150, 25);
         panel.add(comboBox);
 
-        buttonInsert = new JButton("Insert Movie");
+        JButton buttonInsert = new JButton("Insert Movie");
         buttonInsert.setLocation(150, 200);
         buttonInsert.setSize(150, 25);
         panel.add(buttonInsert);
 
-        buttonExit = new JButton("Exit");
+        JButton buttonExit = new JButton("Exit");
         buttonExit.setLocation(310, 300);
         buttonExit.setSize(80, 25);
         panel.add(buttonExit);
 
-        buttonBack = new JButton("back");
+        JButton buttonBack = new JButton("back");
         buttonBack.setLocation(10, 300);
         buttonBack.setSize(80, 25);
         panel.add(buttonBack);
