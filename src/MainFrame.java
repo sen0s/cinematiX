@@ -1,6 +1,9 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import javax.swing.*;
 
 public class MainFrame  extends JFrame {
@@ -91,6 +94,20 @@ public class MainFrame  extends JFrame {
 				new AdminLoginFrame();
 			}
 			if ( e.getSource().equals(exitBtn) ){
+
+				try {
+					FileOutputStream moviesOut = new FileOutputStream("allMovies.ser");
+					moviesOut.write("".getBytes());
+					ObjectOutputStream out = new ObjectOutputStream(moviesOut);
+					out.writeObject(Database.allMovies);
+
+					out.close();
+					moviesOut.close();
+				}
+				catch(IOException i) {
+					i.printStackTrace();
+				}
+
 				System.exit(1);
 			}
 		}

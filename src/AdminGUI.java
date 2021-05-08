@@ -122,7 +122,7 @@ public class AdminGUI extends JFrame{
 			else if (e.getSource().equals(BackB))
 			{
 				frame.dispose();
-				new AdminLogIn();
+				new AdminLoginFrame();
 			}
 		
 			
