@@ -4,17 +4,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class AddMovie extends JInternalFrame {
+public class AddMovieFrame extends JInternalFrame {
 
     private Movie newMovie;
     private ArrayList<Movie> movies = new ArrayList<>();
 
 
     public static void main(String[] args) {
-        new AddMovie();
+        new AddMovieFrame();
     }
 
-    public AddMovie() {
+    public AddMovieFrame() {
 
         newMovie = new Movie();
 
