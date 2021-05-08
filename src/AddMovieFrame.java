@@ -9,11 +9,6 @@ public class AddMovieFrame extends JInternalFrame {
     private Movie newMovie;
     private ArrayList<Movie> movies = new ArrayList<>();
 
-
-    public static void main(String[] args) {
-        new AddMovieFrame();
-    }
-
     public AddMovieFrame() {
 
         newMovie = new Movie();
@@ -116,7 +111,7 @@ public class AddMovieFrame extends JInternalFrame {
 
         DeleteButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new DeleteMovie();
+                new DeleteMovieFrame();
             }
         });
 
