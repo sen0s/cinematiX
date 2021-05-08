@@ -9,6 +9,11 @@ public class AddMovieFrame extends JInternalFrame {
     private Movie newMovie;
     private ArrayList<Movie> movies = new ArrayList<>();
 
+
+    public static void main(String[] args) {
+        new AddMovieFrame();
+    }
+
     public AddMovieFrame() {
 
         newMovie = new Movie();
@@ -62,11 +67,6 @@ public class AddMovieFrame extends JInternalFrame {
         buttonInsert.setSize(150, 25);
         panel.add(buttonInsert);
 
-        JButton buttonExit = new JButton("Exit");
-        buttonExit.setLocation(310, 300);
-        buttonExit.setSize(80, 25);
-        panel.add(buttonExit);
-
         JButton buttonBack = new JButton("back");
         buttonBack.setLocation(10, 300);
         buttonBack.setSize(80, 25);
@@ -103,15 +103,16 @@ public class AddMovieFrame extends JInternalFrame {
             }
         });
 
-        buttonExit.addActionListener(new ActionListener() {
+        buttonBack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                new EmployeeFrame();
+                frame.dispose();
             }
         });
 
         DeleteButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new DeleteMovieFrame();
+                new DeleteMovie();
             }
         });
 
