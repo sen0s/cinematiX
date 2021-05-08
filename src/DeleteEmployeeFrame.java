@@ -4,13 +4,13 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-public class DeleteEmployee extends JFrame implements ActionListener {
+public class DeleteEmployeeFrame extends JFrame implements ActionListener {
 	private JButton DELETE,Back,Exit;
 	private JLabel Username,Password,Title;
 	private JTextField UserName1,Password1;
 	private JPanel Panel,panel1,panel2,panel3;
 	
-	DeleteEmployee(){
+	DeleteEmployeeFrame(){
 		Panel = new JPanel(new BorderLayout());
 			panel1 =  new JPanel();
 				panel2 = new JPanel(new FlowLayout());

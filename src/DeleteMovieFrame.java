@@ -4,15 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class DeleteMovie extends JFrame {
+public class DeleteMovieFrame extends JFrame {
 
     private ArrayList<String> moviesTitle = new ArrayList<>();
 
-    public static void main(String[] args) {
-        new DeleteMovie();
-    }
-
-    public DeleteMovie(){
+    public DeleteMovieFrame(){
 
         for (int i=0; i<AllMovies.allMovies.size(); i++){
             moviesTitle.add(AllMovies.allMovies.get(i).getTitle());
@@ -66,6 +62,12 @@ public class DeleteMovie extends JFrame {
             }
 
         });
+
+
+
+
+
+
 
         frame.setVisible(true);
     }

@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 
 
 
-public class CreateEmployee extends JFrame implements ActionListener {
+public class CreateEmployeeFrame extends JFrame implements ActionListener {
 
 	private JPanel Panel,Panel1,Panel2,Panel3,Panel4,Panel5,Panel6,Panel7;
 	private JLabel name,surname,phone_number,UserName,Password,Gender,Infos;
@@ -23,7 +23,7 @@ public class CreateEmployee extends JFrame implements ActionListener {
 	
 	
 	
-	CreateEmployee(){
+	CreateEmployeeFrame(){
 		//αρχικοποιηση string
 		man = "Man";
 		woman = "Woman";
