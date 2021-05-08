@@ -67,6 +67,12 @@ public class DeleteMovie extends JFrame {
 
         });
 
+
+
+
+
+
+
         frame.setVisible(true);
     }
 
