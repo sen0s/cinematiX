@@ -71,7 +71,6 @@ public class DeleteMovieFrame extends JFrame {
 
         buttonBack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new EmployeeFrame();
                 frame.dispose();
             }
         });
