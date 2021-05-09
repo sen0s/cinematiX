@@ -68,14 +68,10 @@ public class AddMovieFrame extends JInternalFrame {
         panel.add(buttonInsert);
 
         JButton buttonBack = new JButton("back");
-        buttonBack.setLocation(10, 300);
+        buttonBack.setLocation(30, 300);
         buttonBack.setSize(80, 25);
         panel.add(buttonBack);
 
-        JButton DeleteButton = new JButton("Delete");
-        DeleteButton.setLocation(170, 250);
-        DeleteButton.setSize(100, 30);
-        panel.add(DeleteButton);
 
         buttonInsert.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -109,13 +105,6 @@ public class AddMovieFrame extends JInternalFrame {
                 frame.dispose();
             }
         });
-
-        DeleteButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new DeleteMovie();
-            }
-        });
-
 
 
         frame.setVisible(true);
