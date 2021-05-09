@@ -101,7 +101,6 @@ public class AddMovieFrame extends JInternalFrame {
 
         buttonBack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new EmployeeFrame();
                 frame.dispose();
             }
         });
