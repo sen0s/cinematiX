@@ -8,6 +8,10 @@ public class DeleteMovieFrame extends JFrame {
 
     private ArrayList<String> moviesTitle = new ArrayList<>();
 
+    public static void main(String[] args) {
+        new DeleteMovieFrame();
+    }
+
     public DeleteMovieFrame(){
 
         for (int i=0; i<AllMovies.allMovies.size(); i++){
@@ -28,9 +32,14 @@ public class DeleteMovieFrame extends JFrame {
         label1.setBounds(20, 25, size1.width, size1.height);
 
         JButton DeleteButton = new JButton("Delete");
-        DeleteButton.setLocation(300, 150);
+        DeleteButton.setLocation(330, 150);
         DeleteButton.setSize(100, 30);
         panel.add(DeleteButton);
+
+        JButton buttonBack = new JButton("back");
+        buttonBack.setLocation(20, 150);
+        buttonBack.setSize(100, 30);
+        panel.add(buttonBack);
 
        String[] array = moviesTitle.toArray(new String[AllMovies.allMovies.size()]);
         JComboBox comboBox = new JComboBox(array);
@@ -54,19 +63,18 @@ public class DeleteMovieFrame extends JFrame {
                         }
                     }
 
-
-
                 } catch (Exception e1) {
                     JOptionPane.showMessageDialog(null, e1);
                 }
             }
-
         });
 
-
-
-
-
+        buttonBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new EmployeeFrame();
+                frame.dispose();
+            }
+        });
 
 
         frame.setVisible(true);
