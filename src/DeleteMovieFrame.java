@@ -7,15 +7,11 @@ import java.util.ArrayList;
 public class DeleteMovieFrame extends JFrame {
 
     private ArrayList<String> moviesTitle = new ArrayList<>();
-
-    public static void main(String[] args) {
-        new DeleteMovieFrame();
-    }
-
+    
     public DeleteMovieFrame(){
 
-        for (int i=0; i<AllMovies.allMovies.size(); i++){
-            moviesTitle.add(AllMovies.allMovies.get(i).getTitle());
+        for (int i = 0; i< Database.allMovies.size(); i++){
+            moviesTitle.add(Database.allMovies.get(i).getTitle());
         }
 
         JFrame frame = new JFrame("Delete Movie");
@@ -36,12 +32,14 @@ public class DeleteMovieFrame extends JFrame {
         DeleteButton.setSize(100, 30);
         panel.add(DeleteButton);
 
+
         JButton buttonBack = new JButton("back");
         buttonBack.setLocation(20, 150);
         buttonBack.setSize(100, 30);
         panel.add(buttonBack);
 
-       String[] array = moviesTitle.toArray(new String[AllMovies.allMovies.size()]);
+       String[] array = moviesTitle.toArray(new String[Database.allMovies.size()]);
+
         JComboBox comboBox = new JComboBox(array);
         comboBox.setLocation(170, 25);
         comboBox.setSize(150, 25);
@@ -56,9 +54,9 @@ public class DeleteMovieFrame extends JFrame {
 
                     comboBox.removeItem(title);
 
-                    for(int i=0; i<AllMovies.allMovies.size(); i++){
-                        if(AllMovies.allMovies.get(i).getTitle() == title){
-                            AllMovies.allMovies.remove(i);
+                    for(int i = 0; i< Database.allMovies.size(); i++){
+                        if(Database.allMovies.get(i).getTitle() == title){
+                            Database.allMovies.remove(i);
                             JOptionPane.showMessageDialog(null, "Movie deleted Successfully");
                         }
                     }
@@ -74,7 +72,6 @@ public class DeleteMovieFrame extends JFrame {
                 frame.dispose();
             }
         });
-
 
         frame.setVisible(true);
     }

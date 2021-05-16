@@ -117,9 +117,7 @@ public class BookTicketFrame extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if ( e.getSource().equals(bookButton) ){
-				if(normalT.isSelected()) {
-					System.out.println("Normal");
-				}
+
 				//new Reservation();
 			}
 			else if ( e.getSource().equals(backButton) ){
