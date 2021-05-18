@@ -97,12 +97,18 @@ public class MainFrame  extends JFrame {
 
 				try {
 					FileOutputStream moviesOut = new FileOutputStream("allMovies.ser");
+					FileOutputStream roomsOut = new FileOutputStream("allRooms.ser");
 					moviesOut.write("".getBytes());
-					ObjectOutputStream out = new ObjectOutputStream(moviesOut);
-					out.writeObject(Database.allMovies);
+					roomsOut.write("".getBytes());
+					ObjectOutputStream mOut = new ObjectOutputStream(moviesOut);
+					mOut.writeObject(Database.allMovies);
+					ObjectOutputStream rOut = new ObjectOutputStream(roomsOut);
+					rOut.writeObject(Database.allRooms);
 
-					out.close();
+					mOut.close();
+					rOut.close();
 					moviesOut.close();
+					roomsOut.close();
 				}
 				catch(IOException i) {
 					i.printStackTrace();

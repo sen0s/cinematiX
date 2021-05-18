@@ -6,14 +6,15 @@ import javax.swing.*;
 public class EmployeeLoginFrame extends JFrame {
 	private JButton loginBtn, abortBtn;
 	private JLabel usernameLabel, passwordLabel;
-	private JTextField usernameField, passwordField;
+	private JTextField usernameField;
+	private JPasswordField passwordField;
 	private JPanel panel;
 	private JFrame frame = this;
 	private ButtonListener listener;
 	
 	EmployeeLoginFrame(){
 
-		panel = new JPanel(new BorderLayout());
+		panel = new JPanel();
 		panel.setLayout(null);
 		listener = new ButtonListener();
 
@@ -40,9 +41,9 @@ public class EmployeeLoginFrame extends JFrame {
 		panel.add(usernameField);
 		usernameField.setBounds(105,13,150,20);
 
-		passwordField = new JTextField();
+		passwordField = new JPasswordField();
 		panel.add(passwordField);
-		passwordField.setBounds(90,43,120,20);
+		passwordField.setBounds(105,43,120,20);
 		
 		ImageIcon  icon = new ImageIcon("cinema_logo.jpg");
 		this.setSize(350, 150);

@@ -17,18 +17,28 @@ public class Main {
 
 		try {
 			FileInputStream moviesIn = new FileInputStream("allMovies.ser");
-			ObjectInputStream in = new ObjectInputStream(moviesIn);
-			Database.allMovies = (ArrayList<Movie>)in.readObject();
+			ObjectInputStream mIn = new ObjectInputStream(moviesIn);
+			Database.allMovies = (ArrayList<Movie>)mIn.readObject();
 
+			FileInputStream roomsIn = new FileInputStream("allRooms.ser");
+			ObjectInputStream rIn = new ObjectInputStream(roomsIn);
+			Database.allRooms = (ArrayList<Room>)rIn.readObject();
 
-			in.close();
+			mIn.close();
 			moviesIn.close();
+
+			rIn.close();
+			roomsIn.close();
 		}
 		catch(IOException i) {
 			i.printStackTrace();
 		}
 		catch(ClassNotFoundException e) {
 			e.printStackTrace();
+		}
+
+		for (Room r : Database.allRooms){
+			System.out.println("Room ID: " + r.getRoomID() + ", Room capacity: " + r.getCapacity());
 		}
 
 		new MainFrame();

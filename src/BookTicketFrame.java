@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -12,28 +13,48 @@ public class BookTicketFrame extends JFrame {
 	private String name;
 	
 	
-	private JLabel movieL = new JLabel("Ταινία: ");
-	private JLabel roomL = new JLabel("Αίθουσα: ");
-	private JLabel seatL = new JLabel("Θέση: ");
-	private JLabel nameL = new JLabel("Ονoμ/μο: ");
-	private JComboBox movies = new JComboBox();
+	private JLabel movieL;
+	private JLabel roomL;
+	private JLabel seatL;
+	private JLabel nameL;
+	private JComboBox movies;
 	private JComboBox seats = new JComboBox();
-	private JButton backButton = new JButton("Πίσω");
-	private JButton bookButton = new JButton("Κράτηση");
-	private JTextField roomField= new JTextField(" ");
-	private JTextField nameField= new JTextField(" ");
-	private JRadioButton normalT = new JRadioButton("Κανονικό");
-	private JRadioButton childT = new JRadioButton("Παιδικό");
-	private JRadioButton studentT = new JRadioButton("Φοιτητικό");
-	private JRadioButton multiT = new JRadioButton("Πολυτεκνικο");
+	private JButton backButton;
+	private JButton bookButton;
+	private JTextField roomField;
+	private JTextField nameField;
+	private JRadioButton normalT;
+	private JRadioButton childT;
+	private JRadioButton studentT;
+	private JRadioButton multiT;
 	private JPanel panel;
 	private JFrame frame = new JFrame();
 	
 	private ImageIcon img= new ImageIcon("ticket icon.png");
+
+    private ArrayList<String> moviesTitle = new ArrayList<>();
 	
 	
 	public BookTicketFrame() {
-		
+
+        for (Movie m : Database.allMovies){
+            moviesTitle.add(m.getTitle());
+        }
+
+        movieL = new JLabel("Ταινία: ");
+        roomL = new JLabel("Αίθουσα: ");
+        seatL = new JLabel("Θέση: ");
+        nameL = new JLabel("Ονoμ/μο: ");
+        String[] array = moviesTitle.toArray(new String[Database.allMovies.size()]);
+        movies = new JComboBox(array);
+        backButton = new JButton("Πίσω");
+        bookButton = new JButton("Κράτηση");
+        roomField = new JTextField("");
+        nameField= new JTextField("");
+        normalT = new JRadioButton("Κανονικό");
+        childT = new JRadioButton("Παιδικό");
+        studentT = new JRadioButton("Φοιτητικό");
+        multiT = new JRadioButton("Πολυτεκνικο");
 		
 		ButtonListener listener = new ButtonListener();
 		bookButton.addActionListener(listener);
@@ -116,9 +137,10 @@ public class BookTicketFrame extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if ( e.getSource().equals(bookButton) ){
-
-				//new Reservation();
+			if ( e.getSource().equals(bookButton)) {
+			    // Get movie from JComboBox
+			    Movie selectedMovie = Database.getMovieFromTitle((String)movies.getSelectedItem());
+                String room = roomField.getText();
 			}
 			else if ( e.getSource().equals(backButton) ){
 				frame.dispose();

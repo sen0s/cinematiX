@@ -17,6 +17,10 @@ public class Reservation {
         total++;
     }
 
+    public void deleteReservation() {
+
+    }
+
     public int getSeatNumber() {
         return seatNumber;
     }
@@ -57,13 +61,8 @@ public class Reservation {
         this.ticketType = ticketType;
     }
 
-    public void printInfo() {
-        System.out.println("Reservation (" + reservationID + ")");
-        System.out.println("<------------------------------------------------>");
-        System.out.println("Movie: " + movie.getTitle());
-        System.out.println("Seat: " + seatNumber);
+    public void print(){
+        System.out.println(movie);
     }
-
-
 
 }
