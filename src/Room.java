@@ -28,7 +28,39 @@ public class Room {
         return RoomID;
     }
 
-    public void setCapacity(int capacity) {
+    public static ArrayList<Room> getRooms() {
+		return Rooms;
+	}
+
+	public static void setRooms(ArrayList<Room> rooms) {
+		Rooms = rooms;
+	}
+
+	public int getFreeseats() {
+		return freeseats;
+	}
+
+	public void setFreeseats(int freeseats) {
+		this.freeseats = freeseats;
+	}
+
+	public boolean[] getSeats() {
+		return Seats;
+	}
+
+	public void setSeats(boolean[] seats) {
+		Seats = seats;
+	}
+
+	public int[] getFreeSeats() {
+		return FreeSeats;
+	}
+
+	public void setFreeSeats(int[] freeSeats) {
+		FreeSeats = freeSeats;
+	}
+
+	public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
