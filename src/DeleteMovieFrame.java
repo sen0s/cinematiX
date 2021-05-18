@@ -38,7 +38,7 @@ public class DeleteMovieFrame extends JFrame {
         buttonBack.setSize(100, 30);
         panel.add(buttonBack);
 
-       String[] array = moviesTitle.toArray(new String[Database.allMovies.size()]);
+        String[] array = moviesTitle.toArray(new String[Database.allMovies.size()]);
 
         JComboBox comboBox = new JComboBox(array);
         comboBox.setLocation(170, 25);

@@ -13,6 +13,10 @@ public class AdminFrame extends JFrame{
 	private JButton deleteBtn;
 	private JLabel statLabel;
 	private JButton statBtn;
+	private JLabel createRoomLabel;
+	private JButton createRoomBtn;
+	private JLabel deleteRoomLabel;
+	private JButton deleteRoomBtn;
 	private JButton logoutBtn;
 	private JPanel panel;
 	private JFrame frame;
@@ -26,6 +30,10 @@ public class AdminFrame extends JFrame{
 		deleteLabel = new JLabel("Διαγραφή λογαρισμού χρήστη");
 		deleteBtn = new JButton("Διαγραφή");
 		statLabel = new JLabel("Εμφάνιση στατιστικής ανάλυσης");
+		createRoomLabel = new JLabel("Δημιουργία νέας αίθουσας");
+		createRoomBtn = new JButton("Δημιουργία");
+		deleteRoomLabel = new JLabel("Αφαίρεση υπάρχουσας αίθουσας");
+		deleteRoomBtn = new JButton("Διαγραφή");
 		statBtn = new JButton("Εμφάνιση");
 		logoutBtn = new JButton("Logout");
 		frame = this;
@@ -41,15 +49,25 @@ public class AdminFrame extends JFrame{
 		panel.add(deleteLabel);
 		panel.add(deleteBtn);
 		deleteLabel.setBounds(10,45,170,25);
-		deleteBtn.setBounds(190,45,100,25);
+		deleteBtn.setBounds(230,45,100,25);
+
+		panel.add(createRoomLabel);
+		panel.add(createRoomBtn);
+		createRoomLabel.setBounds(10,80,180,25);
+		createRoomBtn.setBounds(230,80,100,25);
+
+		panel.add(deleteRoomLabel);
+		panel.add(deleteRoomBtn);
+		deleteRoomLabel.setBounds(10, 120, 180,25);
+		deleteRoomBtn.setBounds(230, 120,100, 25);
 
 		panel.add(statLabel);
 		panel.add(statBtn);
-		statLabel.setBounds(10,80,180,25);
-		statBtn.setBounds(200,80,100,25);
+//		statLabel.setBounds();
+//		statBtn.setBounds();
 
 		panel.add(logoutBtn);
-		logoutBtn.setBounds(10,128,100,25);
+		logoutBtn.setBounds(10,140,100,25);
 		
 
 		
@@ -58,6 +76,8 @@ public class AdminFrame extends JFrame{
 		deleteBtn.addActionListener(listener);
 		statBtn.addActionListener(listener);
 		logoutBtn.addActionListener(listener);
+		createRoomBtn.addActionListener(listener);
+		deleteRoomBtn.addActionListener(listener);
 
 
 
@@ -91,6 +111,12 @@ public class AdminFrame extends JFrame{
 			else if (e.getSource().equals(logoutBtn))
 			{
 				frame.dispose();
+			}
+			else if(e.getSource().equals(createRoomBtn)){
+				new AddRoomFrame();
+			}
+			else if(e.getSource().equals(deleteRoomBtn)){
+				new DeleteRoomFrame();
 			}
 		
 			

@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -17,6 +18,7 @@ public class EmployeeFrame extends JFrame {
 
 		newMovieLabel =  new JLabel("Καταχώρηση νέας ταινίας");
 		newMovieBtn = new JButton("Καταχώρηση");
+		newMovieBtn.setPreferredSize(new Dimension(50,25));
 		panel.add(newMovieLabel);
 		panel.add(newMovieBtn);
 		newMovieLabel.setBounds(10,10,160,25);
@@ -24,24 +26,27 @@ public class EmployeeFrame extends JFrame {
 
 		newReservationLabel =  new JLabel("Νέα κράτηση");
 		newReservationBtn = new JButton("Κράτηση");
+		newReservationBtn.setPreferredSize(new Dimension(50,25));
 		panel.add(newReservationLabel);
 		panel.add(newReservationBtn);
 		newReservationLabel.setBounds(10,45,80,25);
-		newReservationBtn.setBounds(95,45,100,25);
+		newReservationBtn.setBounds(170,45,100,25);
 
 		delReservationLabel =  new JLabel("Ακύρωση κράτησης");
 		delReservationBtn =  new JButton("Ακύρωση");
+		delReservationBtn.setPreferredSize(new Dimension(50,25));
 		panel.add(delReservationLabel);
 		panel.add(delReservationBtn);
 		delReservationLabel.setBounds(10,80,120,25);
-		delReservationBtn.setBounds(135,80,100,25);
+		delReservationBtn.setBounds(170,80,100,25);
 
 		delMovieLabel =  new JLabel("Διαγραφή ταινίας");
 		delMovieBtn = new JButton("Διαγραφή");
+		delMovieBtn.setPreferredSize(new Dimension(50,25));
 		panel.add(delMovieLabel);
 		panel.add(delMovieBtn);
 		delMovieLabel.setBounds(10,115,100,25);
-		delMovieBtn.setBounds(120,115,100,25);
+		delMovieBtn.setBounds(170,115,100,25);
 
 	    logoutBtn =  new JButton("Logout");
 		panel.add(logoutBtn);
