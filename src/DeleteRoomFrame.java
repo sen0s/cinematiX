@@ -49,6 +49,7 @@ public class DeleteRoomFrame extends JFrame {
                 for (Room r : Database.allRooms){
                     if (ID.equals(r.getRoomID())){
                         Database.allRooms.remove(r);
+                        comboBox.removeItem(ID);
                         JOptionPane.showMessageDialog(null, "Room deleted Successfully");
                         break;
                     }

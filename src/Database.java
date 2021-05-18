@@ -24,7 +24,7 @@ public class Database {
         return selectedMovie;
     }
 
-    public static Room GetRoomFromID(String ID) {
+    public static Room getRoomFromID(String ID) {
         Room selectedRoom = null;
 
         for(Room r : allRooms){

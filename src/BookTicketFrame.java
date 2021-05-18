@@ -5,8 +5,6 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import com.formdev.flatlaf.FlatLightLaf;
-
 public class BookTicketFrame extends JFrame {
 	
 	//private ArrayLit<Movie> filmList = new ArrayList<Movie>();
@@ -18,10 +16,10 @@ public class BookTicketFrame extends JFrame {
 	private JLabel seatL;
 	private JLabel nameL;
 	private JComboBox movies;
-	private JComboBox seats = new JComboBox();
+	private JComboBox seats;
 	private JButton backButton;
 	private JButton bookButton;
-	private JTextField roomField;
+	private JComboBox roomsCombo;
 	private JTextField nameField;
 	private JRadioButton normalT;
 	private JRadioButton childT;
@@ -29,6 +27,7 @@ public class BookTicketFrame extends JFrame {
 	private JRadioButton multiT;
 	private JPanel panel;
 	private JFrame frame = new JFrame();
+    private ArrayList<String> roomIDs = new ArrayList<>();
 	
 	private ImageIcon img= new ImageIcon("ticket icon.png");
 
@@ -41,6 +40,10 @@ public class BookTicketFrame extends JFrame {
             moviesTitle.add(m.getTitle());
         }
 
+        for(Room r : Database.allRooms){
+            roomIDs.add(r.getRoomID());
+        }
+
         movieL = new JLabel("Ταινία: ");
         roomL = new JLabel("Αίθουσα: ");
         seatL = new JLabel("Θέση: ");
@@ -49,12 +52,15 @@ public class BookTicketFrame extends JFrame {
         movies = new JComboBox(array);
         backButton = new JButton("Πίσω");
         bookButton = new JButton("Κράτηση");
-        roomField = new JTextField("");
+        String[] array1 = roomIDs.toArray(new String[Database.allRooms.size()]);
+        roomsCombo = new JComboBox(array1);
         nameField= new JTextField("");
         normalT = new JRadioButton("Κανονικό");
         childT = new JRadioButton("Παιδικό");
         studentT = new JRadioButton("Φοιτητικό");
         multiT = new JRadioButton("Πολυτεκνικο");
+
+        seats = new JComboBox();
 		
 		ButtonListener listener = new ButtonListener();
 		bookButton.addActionListener(listener);
@@ -92,9 +98,9 @@ public class BookTicketFrame extends JFrame {
         movies.setSize(200, 20);
         panel.add(movies);
         
-        roomField.setLocation(200, 40);
-        roomField.setSize(200, 20);
-        panel.add(roomField);
+        roomsCombo.setLocation(200, 40);
+        roomsCombo.setSize(200, 20);
+        panel.add(roomsCombo);
         
         seats.setLocation(200, 70);
         seats.setSize(200, 20);
@@ -139,8 +145,28 @@ public class BookTicketFrame extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			if ( e.getSource().equals(bookButton)) {
 			    // Get movie from JComboBox
+                //String movie = String.valueOf(movies.getSelectedItem());
 			    Movie selectedMovie = Database.getMovieFromTitle((String)movies.getSelectedItem());
-                String room = roomField.getText();
+                //String room = String.valueOf(roomsCombo.getSelectedItem());
+                Room selectedRoom = Database.getRoomFromID((String)roomsCombo.getSelectedItem());
+                //int selectedSeat = Integer.parseInt(seatL.getText());
+
+                String ticketType;
+                if(normalT.isSelected()){
+                    ticketType = "normal";
+                }
+                else if (childT.isSelected()){
+                    ticketType = "child";
+                }
+                else if (studentT.isSelected()){
+                    ticketType = "student";
+                }
+                else{
+                    ticketType = "multi";
+                }
+
+                Database.allReservations.add(new Reservation(selectedMovie, 2, ticketType, selectedRoom));
+                JOptionPane.showMessageDialog(null, "Η κράτηση πραγματοποιήθηκε!");
 			}
 			else if ( e.getSource().equals(backButton) ){
 				frame.dispose();

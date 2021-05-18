@@ -24,11 +24,18 @@ public class Main {
 			ObjectInputStream rIn = new ObjectInputStream(roomsIn);
 			Database.allRooms = (ArrayList<Room>)rIn.readObject();
 
+			FileInputStream reservationsIn = new FileInputStream("allReservations.ser");
+			ObjectInputStream resIn = new ObjectInputStream(reservationsIn);
+			Database.allReservations = (ArrayList<Reservation>)resIn.readObject();
+
 			mIn.close();
 			moviesIn.close();
 
 			rIn.close();
 			roomsIn.close();
+
+			resIn.close();
+			reservationsIn.close();
 		}
 		catch(IOException i) {
 			i.printStackTrace();
@@ -39,6 +46,10 @@ public class Main {
 
 		for (Room r : Database.allRooms){
 			System.out.println("Room ID: " + r.getRoomID() + ", Room capacity: " + r.getCapacity());
+		}
+
+		for (Reservation r : Database.allReservations){
+			r.print();
 		}
 
 		new MainFrame();

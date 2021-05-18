@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Reservation {
+public class Reservation implements Serializable {
     static int total = 0;
     private Movie movie;
     private Room room;
@@ -18,7 +19,7 @@ public class Reservation {
     }
 
     public void deleteReservation() {
-
+        Database.allReservations.remove(this);
     }
 
     public int getSeatNumber() {
@@ -62,7 +63,12 @@ public class Reservation {
     }
 
     public void print(){
-        System.out.println(movie);
+        System.out.println("\n");
+        System.out.println("Reservation ID: " + reservationID);
+        System.out.println("Room: " + room.getRoomID() +
+                            ", Seat: " + seatNumber);
+        System.out.println("Ticket type: " + ticketType);
+        System.out.println("Movie: " + movie.getTitle());
     }
 
 }
