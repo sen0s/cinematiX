@@ -1,13 +1,23 @@
-import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Room implements Serializable {
+public class Room {
+	public static ArrayList<Room> Rooms =  new ArrayList<Room>();
     private String RoomID;
     private int capacity;
+    private int freeseats;
     private Database database;
+    private boolean Seats[];
+    private int FreeSeats[];
 
     public Room(String RoomID,int capacity) {
     this.capacity =  capacity;
+    freeseats =  capacity;
     this.RoomID =  RoomID;
+    for(int i=0;i<capacity;i++) {
+    	Seats[i] = true;//True σημαινει οτι η θεση ειναι αρχικα αδεια
+    }
+    
+    Rooms.add(this);
     }
 
     public int getCapacity() {
@@ -28,9 +38,9 @@ public class Room implements Serializable {
 
     public boolean checkCapacity(){
         if(getEmptySeats() == 0)
-            return false;//ΞµΟ€ΞΉΟƒΟ„ΟΞΏΟ†Ξ· false  ΞΏΟ„Ξ±Ξ½ ΞµΞ½Ξ± room ΞµΞΉΞ½Ξ±ΞΉ Ξ³ΞµΞΌΞ±Ο„ΞΏ
+            return false;
         else
-            return true;//Ξ±Ξ½ ΞµΟ‡ΞµΞΉ ΞΊΞµΞ½ΞµΟ‚ ΞΈΞµΟƒΞµΞΉΟ‚ ΞµΟ€ΞΉΟƒΟ„ΟΞµΟ†ΞµΞΉ true
+            return true;
     }
 
     public  int getEmptySeats(){
@@ -41,8 +51,20 @@ public class Room implements Serializable {
             }
 
         }
-
-        return (capacity-ReservedSeats);
+        
+        freeseats =  capacity - ReservedSeats;
+        
+        return freeseats;
+    }
+    
+    public void NumberOfFreeSeats() {
+    	int j=0;
+    	for(int i=0;i<capacity;i++) {
+    		if(Seats[i] == true) {
+    			FreeSeats[j] = i;
+    			j++;
+    		}
+    	}
     }
 }
 
