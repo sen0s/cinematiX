@@ -54,6 +54,8 @@ public class BookTicketFrame extends JFrame {
         bookButton = new JButton("Κράτηση");
         String[] array1 = roomIDs.toArray(new String[Database.allRooms.size()]);
         roomsCombo = new JComboBox(array1);
+        roomsCombo.setSelectedIndex(0);
+
         nameField= new JTextField("");
         normalT = new JRadioButton("Κανονικό");
         childT = new JRadioButton("Παιδικό");
@@ -65,6 +67,8 @@ public class BookTicketFrame extends JFrame {
 		ButtonListener listener = new ButtonListener();
 		bookButton.addActionListener(listener);
 		backButton.addActionListener(listener);
+
+        roomsCombo.addActionListener(listener);
 		
 		frame.setIconImage(img.getImage());
 		
@@ -171,6 +175,22 @@ public class BookTicketFrame extends JFrame {
 			else if ( e.getSource().equals(backButton) ){
 				frame.dispose();
 			}
+			else if(e.getSource().equals(roomsCombo)){
+                Room selectedRoom = Database.getRoomFromID((String)roomsCombo.getSelectedItem());
+                System.out.println(selectedRoom.getRoomID());
+                ArrayList<Integer> empty = selectedRoom.getEmptySeats();
+//                for (Integer i : empty){
+//                    System.out.println("Seats No: " + i);
+//                }
+                String[] array = new String[empty.size()];
+                for(int j =0;j<empty.size();j++){
+
+                    array[j] = String.valueOf(empty.get(j));
+                    seats.addItem(array[j]);
+
+                }
+                seats.setSelectedIndex(0);
+            }
 		}
 		
 	}

@@ -45,6 +45,7 @@ public class AddRoomFrame extends JFrame {
                 String roomID = roomIDField.getText();
                 int roomCapacity = Integer.parseInt(roomCapacityField.getText());
                 Database.allRooms.add(new Room(roomID, roomCapacity));
+                JOptionPane.showMessageDialog(null, "Room created Successfully");
             }
         }
     }

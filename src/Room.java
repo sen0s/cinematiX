@@ -1,23 +1,25 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Room {
-	public static ArrayList<Room> Rooms =  new ArrayList<Room>();
+public class Room implements Serializable {
+
     private String RoomID;
     private int capacity;
-    private int freeseats;
-    private Database database;
-    private boolean Seats[];
-    private int FreeSeats[];
+    private ArrayList<Boolean> seats;
 
     public Room(String RoomID,int capacity) {
-    this.capacity =  capacity;
-    freeseats =  capacity;
-    this.RoomID =  RoomID;
-    for(int i=0;i<capacity;i++) {
-    	Seats[i] = true;//True σημαινει οτι η θεση ειναι αρχικα αδεια
-    }
-    
-    Rooms.add(this);
+
+        this.capacity =  capacity;
+        this.RoomID =  RoomID;
+
+        this.seats = new ArrayList<>();
+        for(int i=0;i<capacity;i++) {
+            this.seats.add(true); //True σημαινει οτι η θεση ειναι αρχικα αδεια
+        }
+
+        for(Boolean b : seats) {
+            System.out.println(b);
+        }
     }
 
     public int getCapacity() {
@@ -28,38 +30,6 @@ public class Room {
         return RoomID;
     }
 
-    public static ArrayList<Room> getRooms() {
-		return Rooms;
-	}
-
-	public static void setRooms(ArrayList<Room> rooms) {
-		Rooms = rooms;
-	}
-
-	public int getFreeseats() {
-		return freeseats;
-	}
-
-	public void setFreeseats(int freeseats) {
-		this.freeseats = freeseats;
-	}
-
-	public boolean[] getSeats() {
-		return Seats;
-	}
-
-	public void setSeats(boolean[] seats) {
-		Seats = seats;
-	}
-
-	public int[] getFreeSeats() {
-		return FreeSeats;
-	}
-
-	public void setFreeSeats(int[] freeSeats) {
-		FreeSeats = freeSeats;
-	}
-
 	public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
@@ -68,35 +38,60 @@ public class Room {
         RoomID = roomID;
     }
 
-    public boolean checkCapacity(){
-        if(getEmptySeats() == 0)
-            return false;
-        else
-            return true;
+    public void reserveSeat(int seatNumber) {
+        seats.add(seatNumber, false);
     }
 
-    public  int getEmptySeats(){
-        int ReservedSeats=0;
-        for(Reservation reservations:database.allReservations){
-            if(reservations.getRoom().getRoomID() == this.getRoomID()){
-                ReservedSeats ++;
+    public ArrayList<Integer> getEmptySeats() {
+        ArrayList<Integer> emptySeats = new ArrayList<>();
+
+        for (int i=0;i<seats.size();i++){
+            if (seats.get(i) == true){
+                emptySeats.add(i+1);
+//                System.out.println(emptySeats.get(i));
             }
-
         }
-        
-        freeseats =  capacity - ReservedSeats;
-        
-        return freeseats;
+
+
+//        for(Boolean b : seats) {
+//            if (b == true){
+//                emptySeats.add(seats.indexOf(b));
+//                System.out.println(seats.indexOf(b));
+//            }
+//        }
+
+        return emptySeats;
     }
-    
-    public void NumberOfFreeSeats() {
-    	int j=0;
-    	for(int i=0;i<capacity;i++) {
-    		if(Seats[i] == true) {
-    			FreeSeats[j] = i;
-    			j++;
-    		}
-    	}
-    }
+
+//    public boolean checkCapacity(){
+//        if(getEmptySeats() == 0)
+//            return false;
+//        else
+//            return true;
+//    }
+
+//    public  int getEmptySeats(){
+//        int ReservedSeats=0;
+//        for(Reservation reservations:Database.allReservations){
+//            if(reservations.getRoom().getRoomID() == this.getRoomID()){
+//                ReservedSeats ++;
+//            }
+//
+//        }
+//
+//        freeSeats =  capacity - ReservedSeats;
+//
+//        return freeSeats;
+//    }
+//
+//    public void NumberOfFreeSeats() {
+//    	int j=0;
+//    	for(int i=0;i<capacity;i++) {
+//    		if(Seats[i] == true) {
+//    			FreeSeats[j] = i;
+//    			j++;
+//    		}
+//    	}
+//    }
 }
 
