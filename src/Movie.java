@@ -42,7 +42,7 @@ public class Movie implements Serializable {
         this.genre=genre;
     }
     public void setDayTime(ArrayList<String> dates){
-        date_time = dates;
+        //date_time = dates;
     }
 
 
