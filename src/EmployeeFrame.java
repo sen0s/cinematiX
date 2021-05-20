@@ -4,8 +4,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class EmployeeFrame extends JFrame {
-	JLabel newMovieLabel, newReservationLabel, delReservationLabel, delMovieLabel;
-	JButton newMovieBtn, newReservationBtn, delReservationBtn, delMovieBtn, logoutBtn;
+	JLabel AddScreening,DeleteScreening,newMovieLabel, newReservationLabel, delReservationLabel, delMovieLabel;
+	JButton newMovieBtn,AddScreeeningBtn,DelScreeningBtn,newReservationBtn, delReservationBtn, delMovieBtn, logoutBtn;
 	JPanel panel;
 	JFrame JFrame = this;
 	
@@ -47,10 +47,28 @@ public class EmployeeFrame extends JFrame {
 		panel.add(delMovieBtn);
 		delMovieLabel.setBounds(10,115,100,25);
 		delMovieBtn.setBounds(170,115,100,25);
-
+		
+		AddScreening =  new JLabel("Προσθήκη προβολής");
+		AddScreeeningBtn =  new JButton("Προσθήκη");
+		AddScreeeningBtn.setPreferredSize(new Dimension(50,25));
+		panel.add(AddScreening);
+		panel.add(AddScreeeningBtn);
+		AddScreening.setBounds(10, 150, 180, 25);
+		AddScreeeningBtn.setBounds(170, 150, 100, 25);
+		
+		
+		DeleteScreening =  new JLabel("Διαγραφή  προβολής");
+		DelScreeningBtn =  new JButton("Διαγραφή");
+		DelScreeningBtn.setPreferredSize(new Dimension(50,25));
+		panel.add(DeleteScreening);
+		panel.add(DelScreeningBtn);
+		DeleteScreening.setBounds(10, 185, 180, 25);
+		DelScreeningBtn.setBounds(170, 185, 100, 25);
+		
+		
 	    logoutBtn =  new JButton("Logout");
 		panel.add(logoutBtn);
-		logoutBtn.setBounds(10,160,100,25);
+		logoutBtn.setBounds(10,220,100,25);
 	    					
 
 
@@ -62,13 +80,14 @@ public class EmployeeFrame extends JFrame {
 		newReservationBtn.addActionListener(listener);
 		delReservationBtn.addActionListener(listener);
 		delMovieBtn.addActionListener(listener);
+		AddScreeeningBtn.addActionListener(listener);
+		DelScreeningBtn.addActionListener(listener);
 		logoutBtn.addActionListener(listener);
 		
 		ImageIcon  icon = new ImageIcon("cinema_logo.jpg");
-		this.setSize(400,230);
+		this.setSize(400,300);
 		this.setIconImage(icon.getImage());
 		this.setContentPane(panel);
-		
 		this.setVisible(true);
 		this.setResizable(false);
 		this.setTitle("Παράθυρο Υπαλλήλου");
@@ -93,6 +112,12 @@ public class EmployeeFrame extends JFrame {
 			if ( e.getSource().equals(delMovieBtn) ) {
 				new DeleteMovieFrame();
 			}
+			if(e.getSource().equals(AddScreeeningBtn)) {
+				new AddScreeningFrame();
+			}
+			if(e.getSource().equals(DelScreeningBtn)) {
+				new DeleteScreeningFrame();
+			}
 			if ( e.getSource().equals(logoutBtn) ) {
 				JFrame.dispose();
 			}
@@ -101,4 +126,4 @@ public class EmployeeFrame extends JFrame {
 	}
 	
 
-}
+	}

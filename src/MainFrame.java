@@ -87,7 +87,7 @@ public class MainFrame  extends JFrame {
 	class ButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) {
-			if ( e.getSource().equals(employeeLoginBtn) ){
+		if ( e.getSource().equals(employeeLoginBtn) ){
 				new EmployeeLoginFrame();
 			}
 			if ( e.getSource().equals(adminLoginBtn) ){

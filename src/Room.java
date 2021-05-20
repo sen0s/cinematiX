@@ -6,6 +6,7 @@ public class Room implements Serializable {
     private String RoomID;
     private int capacity;
     private ArrayList<Boolean> seats;
+    private HashMap<Date,Room> 
 
     public Room(String RoomID,int capacity) {
 
