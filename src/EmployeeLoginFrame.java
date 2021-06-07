@@ -1,18 +1,25 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+
 import javax.swing.*;
 
 public class EmployeeLoginFrame extends JFrame {
 	private JButton loginBtn, abortBtn;
 	private JLabel usernameLabel, passwordLabel;
-	private JTextField usernameField;
-	private JPasswordField passwordField;
+	private JTextField userIDField = new JTextField();;
+	private JPasswordField userPasswordField = new JPasswordField();
+;
 	private JPanel panel;
 	private JFrame frame = this;
 	private ButtonListener listener;
+	HashMap<String,String> logininfo = new HashMap<String,String>();
+	 
 	
-	EmployeeLoginFrame(){
+	EmployeeLoginFrame(HashMap<String,String> loginInfoOriginal){
+		
+		logininfo = loginInfoOriginal;
 
 		panel = new JPanel();
 		panel.setLayout(null);
@@ -37,13 +44,13 @@ public class EmployeeLoginFrame extends JFrame {
 		panel.add(passwordLabel);
 		passwordLabel.setBounds(10,40,80,25);
 
-		usernameField = new JTextField();
-		panel.add(usernameField);
-		usernameField.setBounds(105,13,150,20);
+		userIDField = new JTextField();
+		panel.add(userIDField);
+		userIDField.setBounds(105,13,150,20);
 
-		passwordField = new JPasswordField();
-		panel.add(passwordField);
-		passwordField.setBounds(105,43,120,20);
+		
+		panel.add(userPasswordField);
+		userPasswordField.setBounds(105,43,120,20);
 		
 		ImageIcon  icon = new ImageIcon("cinema_logo.jpg");
 		this.setSize(350, 150);
@@ -60,12 +67,22 @@ public class EmployeeLoginFrame extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if ( e.getSource().equals(loginBtn) ){
-				new EmployeeFrame();
+				String userID = userIDField.getText();
+				String password = String.valueOf(userPasswordField.getPassword());
+				if(logininfo.containsKey(userID)) {
+					if(logininfo.get(userID).equals(password)) {
+						frame.dispose();
+						new EmployeeFrame();
+					}
+			    }
+				else {
+					JOptionPane.showMessageDialog(null, "Wrong Password or ID");
+				}
+	         }
+			 if ( e.getSource().equals(abortBtn) ){
 				frame.dispose();
-			}
-			if ( e.getSource().equals(abortBtn) ){
-				frame.dispose();
-			}
+			 }
+
 		}
 	}
 }

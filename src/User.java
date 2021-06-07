@@ -1,5 +1,7 @@
 import java.util.UUID;
 
+import src.IDandPasswords;
+
 public class User {
 
 	private String username;
@@ -10,6 +12,7 @@ public class User {
 	private String surname;
 	private int age;
 	private String email;
+	
 
 	public User(String username, String password) {
 		this.username = username;
@@ -40,4 +43,7 @@ public class User {
 	public void setAdmin(boolean admin) {
 		isAdmin = admin;
 	}
+
+	
 }
+	

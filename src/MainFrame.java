@@ -4,7 +4,11 @@ import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.HashMap;
+
 import javax.swing.*;
+
+import src.IDandPasswords;
 
 public class MainFrame  extends JFrame {
 	
@@ -13,6 +17,7 @@ public class MainFrame  extends JFrame {
 	private JLabel title;
 	private JButton employeeLoginBtn, adminLoginBtn, exitBtn;
 	private ButtonListener listener;
+	public int String;
 	
 	MainFrame(){
 		/*
@@ -82,13 +87,17 @@ public class MainFrame  extends JFrame {
 		this.setTitle("Είσοδος Χρήστη");
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(MainFrame.EXIT_ON_CLOSE);
+		
 	}
 	
 	class ButtonListener implements ActionListener
 	{
+		
 		public void actionPerformed(ActionEvent e) {
-		if ( e.getSource().equals(employeeLoginBtn) ){
-				new EmployeeLoginFrame();
+			
+		    if ( e.getSource().equals(employeeLoginBtn) ){
+		    	IDandPasswords idandPasswords = new IDandPasswords();
+				new EmployeeLoginFrame(idandPasswords.getLoginInfo());
 			}
 			if ( e.getSource().equals(adminLoginBtn) ){
 				new AdminLoginFrame();
