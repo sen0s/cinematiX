@@ -8,6 +8,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
@@ -15,8 +16,9 @@ import javax.swing.JTextField;
 public class CreateEmployeeFrame extends JFrame implements ActionListener {
 
 	private JPanel Panel,Panel1,Panel2,Panel3,Panel4,Panel5,Panel6,Panel7;
-	private JLabel name,surname,phone_number,UserName,Password,Gender,Infos;
-	private JTextField text1,text2,text3,text4,text5;
+	private JLabel name,surname,phone_number,username,password,Gender,Infos;
+	private JTextField Name,Surname,Phone_Number,Username;
+	private JPasswordField Password;
 	private JComboBox<String> Option;
 	private JButton create , back,exit;
 	private String man,woman,nonofabove;
@@ -59,8 +61,8 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		name =  new JLabel("Name");
 			surname = new JLabel("Surname");
 				phone_number =  new JLabel("Phone_Number");
-					UserName =  new JLabel("UserName");
-						Password = new JLabel("Password");
+					username =  new JLabel("UserName");
+						password = new JLabel("Password");
 							Gender = new JLabel("Gender");
 								Infos =  new JLabel(" Insert following info's");
 								
@@ -70,11 +72,11 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 				exit =  new JButton("Exit");
 		
 		//JTextField
-		text1 =  new JTextField();	
-		 text2 =  new  JTextField();
-		 	text3 =  new JTextField();
-		 		text4 =  new JTextField();
-		 			text5 = new JTextField();
+		Name =  new JTextField();	
+		 Surname =  new  JTextField();
+		 	Phone_Number =  new JTextField();
+		 		Username =  new JTextField();
+		 			Password = new JPasswordField();
 		 //ComboBox
 		 Option =  new JComboBox<String>();
 		 
@@ -89,15 +91,15 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		 Panel1.add(Infos,Panel1.CENTER_ALIGNMENT);	
 		 //panel6		
 		 Panel6.add(name);
-			Panel6.add(text1);
+			Panel6.add(Name);
 				Panel6.add(surname);
-		 			Panel6.add(text2);
+		 			Panel6.add(Surname);
 						Panel6.add(phone_number);
-							Panel6.add(text3);
-								Panel6.add(UserName);
-									Panel6.add(text4);
-										Panel6.add(Password);
-											Panel6.add(text5);
+							Panel6.add(Phone_Number);
+								Panel6.add(username);
+									Panel6.add(UserName);
+										Panel6.add(password);
+											Panel6.add(Password);
 												Panel6.add(Gender);
 													Panel6.add(Option);
 														Panel7.setBackground(Color.white);
@@ -136,8 +138,13 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		this.setDefaultCloseOperation(MainFrame.EXIT_ON_CLOSE);
 	}
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent e) {
+		String userID = Username.getText();
+		String password = String.valueOf(Password.getPassword());
+		if (e.getSource().equals(create))
+		{
+             
+		}
 		
 	}
 

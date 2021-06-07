@@ -98,11 +98,11 @@ public class AdminFrame extends JFrame{
 		{
 			if (e.getSource().equals(createBtn))
 			{
-
+                 new CreateEmployeeFrame();
 			}
 			else if (e.getSource().equals(deleteBtn))
 			{
-
+                 new DeleteEmployeeFrame();
 			}
 			else if (e.getSource().equals(statBtn))
 			{
