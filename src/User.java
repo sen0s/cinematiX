@@ -1,6 +1,5 @@
 import java.util.UUID;
 
-import src.IDandPasswords;
 
 public class User {
 
