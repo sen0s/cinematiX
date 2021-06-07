@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 
 
 
-public class CreateEmployeeFrame extends JFrame implements ActionListener {
+public class CreateEmployeeFrame extends JFrame  {
 
 	private JPanel Panel,Panel1,Panel2,Panel3,Panel4,Panel5,Panel6,Panel7;
 	private JLabel name,surname,phone_number,username,password,Gender,Infos;
@@ -22,6 +22,7 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 	private JComboBox<String> Option;
 	private JButton create , back,exit;
 	private String man,woman,nonofabove;
+	private JFrame frame;
 	
 	
 	
@@ -77,6 +78,8 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		 	Phone_Number =  new JTextField();
 		 		Username =  new JTextField();
 		 			Password = new JPasswordField();
+		 			
+		frame = this; 			
 		 //ComboBox
 		 Option =  new JComboBox<String>();
 		 
@@ -97,7 +100,7 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 						Panel6.add(phone_number);
 							Panel6.add(Phone_Number);
 								Panel6.add(username);
-									Panel6.add(UserName);
+									Panel6.add(Username);
 										Panel6.add(password);
 											Panel6.add(Password);
 												Panel6.add(Gender);
@@ -123,8 +126,6 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		//PANEL7 ME PANEL5
 		Panel5.add(Panel7,BorderLayout.NORTH);
 		
-		
-		
 		 
 		ImageIcon  icon = new ImageIcon("cinema-logo_23-2147503279.jpg");
 		
@@ -137,15 +138,24 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		this.setTitle("Entrance Frame");
 		this.setDefaultCloseOperation(MainFrame.EXIT_ON_CLOSE);
 	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
+	
+	class ButtonListener implements ActionListener {
+	
+	 @Override
+	 public void actionPerformed(ActionEvent e) {
 		String userID = Username.getText();
 		String password = String.valueOf(Password.getPassword());
 		if (e.getSource().equals(create))
 		{
              
 		}
-		
+		if(e.getSource().equals(back))
+		{
+			frame.dispose();
+		}
+	  } 
 	}
+	 
+	 
 
 }

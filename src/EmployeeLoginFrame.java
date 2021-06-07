@@ -10,7 +10,6 @@ public class EmployeeLoginFrame extends JFrame {
 	private JLabel usernameLabel, passwordLabel;
 	private JTextField userIDField = new JTextField();;
 	private JPasswordField userPasswordField = new JPasswordField();
-;
 	private JPanel panel;
 	private JFrame frame = this;
 	private ButtonListener listener;
