@@ -65,9 +65,18 @@ public class AdminLoginFrame extends JFrame {
 	class ButtonListener implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				String userID = usernameField.getText();
+				String password = String.valueOf(passwordField.getPassword());
 				if ( e.getSource().equals(loginBtn) ){
-					new AdminFrame();
-					frame.dispose();
+					if(userID.equals("Admin") && password.equals("111"))
+					{
+					 new AdminFrame();
+					 frame.dispose();
+					}
+					else
+					{
+					  JOptionPane.showMessageDialog(null, "Wrong Password or ID");
+					}
 				}
 				if ( e.getSource().equals(abortBtn) ){
 					frame.dispose();
