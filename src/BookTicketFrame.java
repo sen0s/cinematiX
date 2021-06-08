@@ -152,7 +152,7 @@ public class BookTicketFrame extends JFrame {
 			    Movie selectedMovie = Database.getMovieFromTitle((String)movies.getSelectedItem());
                 //String room = String.valueOf(roomsCombo.getSelectedItem());
                 Room selectedRoom = Database.getRoomFromID((String)roomsCombo.getSelectedItem());
-                //int selectedSeat = Integer.parseInt(seatL.getText());
+                int selectedSeat = Integer.parseInt(String.valueOf(seats.getSelectedItem()));
 
                 String ticketType;
                 if(normalT.isSelected()){
@@ -168,7 +168,9 @@ public class BookTicketFrame extends JFrame {
                     ticketType = "multi";
                 }
 
-                Database.allReservations.add(new Reservation(selectedMovie, 2, ticketType, selectedRoom));
+                Database.allReservations.add(new Reservation(selectedMovie, selectedSeat, ticketType, selectedRoom));
+                selectedRoom.reserveSeat(selectedSeat);
+                seats.removeItem(String.valueOf(selectedSeat));
                 JOptionPane.showMessageDialog(null, "Η κράτηση πραγματοποιήθηκε!");
 			}
 			else if ( e.getSource().equals(backButton) ){
@@ -178,15 +180,11 @@ public class BookTicketFrame extends JFrame {
                 Room selectedRoom = Database.getRoomFromID((String)roomsCombo.getSelectedItem());
                 System.out.println(selectedRoom.getRoomID());
                 ArrayList<Integer> empty = selectedRoom.getEmptySeats();
-//                for (Integer i : empty){
-//                    System.out.println("Seats No: " + i);
-//                }
                 String[] array = new String[empty.size()];
                 for(int j =0;j<empty.size();j++){
-
                     array[j] = String.valueOf(empty.get(j));
                     seats.addItem(array[j]);
-
+                    System.out.println(array[j]);
                 }
                 seats.setSelectedIndex(0);
             }
