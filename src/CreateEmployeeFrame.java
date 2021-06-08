@@ -134,7 +134,7 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		create.addActionListener(this);
 		back.addActionListener(this);
 		exit.addActionListener(this);
-		ImageIcon  icon = new ImageIcon("cinema-logo_23-2147503279.jpg");
+		ImageIcon  icon = new ImageIcon("cinema_logo.jpg");
 		
 		this.setSize(350,350);
 		this.setIconImage(icon.getImage());

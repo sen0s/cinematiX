@@ -50,7 +50,7 @@ public class DeleteEmployeeFrame extends JFrame implements ActionListener {
 		
 		
 		
-		ImageIcon  icon = new ImageIcon("cinema-logo_23-2147503279.jpg");
+		ImageIcon  icon = new ImageIcon("cinema_logo.jpg");
 		this.setSize(400,300);
 		this.setIconImage(icon.getImage());
 		this.setContentPane(Panel);

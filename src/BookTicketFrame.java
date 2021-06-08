@@ -54,7 +54,6 @@ public class BookTicketFrame extends JFrame {
         bookButton = new JButton("Κράτηση");
         String[] array1 = roomIDs.toArray(new String[Database.allRooms.size()]);
         roomsCombo = new JComboBox(array1);
-        roomsCombo.setSelectedIndex(0);
 
         nameField= new JTextField("");
         normalT = new JRadioButton("Κανονικό");
