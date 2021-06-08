@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 
 
 
-public class CreateEmployeeFrame extends JFrame  {
+public class CreateEmployeeFrame extends JFrame implements ActionListener {
 
 	private JPanel Panel,Panel1,Panel2,Panel3,Panel4,Panel5,Panel6,Panel7;
 	private JLabel name,surname,phone_number,username,password,Gender,Infos;
@@ -139,7 +139,7 @@ public class CreateEmployeeFrame extends JFrame  {
 		this.setDefaultCloseOperation(MainFrame.EXIT_ON_CLOSE);
 	}
 	
-	class ButtonListener implements ActionListener {
+	
 	
 	 @Override
 	 public void actionPerformed(ActionEvent e) {
@@ -154,8 +154,7 @@ public class CreateEmployeeFrame extends JFrame  {
 			frame.dispose();
 		}
 	  } 
-	}
+	
 	 
-	 
-
+	
 }

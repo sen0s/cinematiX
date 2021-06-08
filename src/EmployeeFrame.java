@@ -116,7 +116,7 @@ public class EmployeeFrame extends JFrame {
 				new AddScreeningFrame();
 			}
 			if(e.getSource().equals(DelScreeningBtn)) {
-	//			new DeleteScreeningFrame();
+				new DeleteScreeningFrame();
 			}
 			if ( e.getSource().equals(logoutBtn) ) {
 				JFrame.dispose();

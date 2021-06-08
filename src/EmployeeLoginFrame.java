@@ -77,6 +77,7 @@ public class EmployeeLoginFrame extends JFrame {
 				else {
 					JOptionPane.showMessageDialog(null, "Wrong Password or ID");
 				}
+			
 	         }
 			 if ( e.getSource().equals(abortBtn) ){
 				frame.dispose();
