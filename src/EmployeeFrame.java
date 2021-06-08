@@ -113,7 +113,7 @@ public class EmployeeFrame extends JFrame {
 				new DeleteMovieFrame();
 			}
 			if(e.getSource().equals(AddScreeeningBtn)) {
-//				new AddScreeningFrame();
+				new AddScreeningFrame();
 			}
 			if(e.getSource().equals(DelScreeningBtn)) {
 	//			new DeleteScreeningFrame();
