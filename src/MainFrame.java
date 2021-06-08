@@ -80,9 +80,9 @@ public class MainFrame  extends JFrame {
 		exitBtn.addActionListener(listener);
 		
 		ImageIcon icon = new ImageIcon("cinema_logo.jpg");
-		
-		this.setSize(280,180);
 		this.setIconImage(icon.getImage());
+
+		this.setSize(280,180);
 		this.setContentPane(mainPanel);
 		this.setVisible(true);
 		this.setResizable(false);

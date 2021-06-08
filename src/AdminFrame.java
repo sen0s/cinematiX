@@ -38,7 +38,7 @@ public class AdminFrame extends JFrame implements ActionListener{
 		createRoomLabel = new JLabel("Δημιουργία νέας αίθουσας");
 		createRoomBtn = new JButton("Δημιουργία");
 		deleteRoomLabel = new JLabel("Αφαίρεση υπάρχουσας αίθουσας");
-		deleteRoomBtn = new JButton("Διαγραφή");
+		deleteRoomBtn = new JButton("Αφαίρεση");
 		statBtn = new JButton("Εμφάνιση");
 		logoutBtn = new JButton("Logout");
 		frame = this;
@@ -72,7 +72,7 @@ public class AdminFrame extends JFrame implements ActionListener{
 //		statBtn.setBounds();
 
 		panel.add(logoutBtn);
-		logoutBtn.setBounds(10,140,100,25);
+		logoutBtn.setBounds(10,160,100,25);
 		
 
 		
@@ -84,11 +84,12 @@ public class AdminFrame extends JFrame implements ActionListener{
 		createRoomBtn.addActionListener(this);
 		deleteRoomBtn.addActionListener(this);
 
-
+		ImageIcon icon = new ImageIcon("cinema_logo.jpg");
+		this.setIconImage(icon.getImage());
 
 		this.setVisible(true);
 		this.setResizable(false);
-		this.setSize(400,200);
+		this.setSize(400,250);
 		this.setTitle("Παράθυρο Διαχειριστή");
 		this.setContentPane(panel);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

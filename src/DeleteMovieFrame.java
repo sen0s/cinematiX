@@ -14,14 +14,13 @@ public class DeleteMovieFrame extends JFrame {
             moviesTitle.add(Database.allMovies.get(i).getTitle());
         }
 
-        JFrame frame = new JFrame("Delete Movie");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame frame = new JFrame("Διαγραφή Ταινίας");
         frame.setSize(500, 250);
         frame.setLocation(450, 250);
         JPanel panel = (JPanel) frame.getContentPane();
         panel.setLayout(null);
 
-        JLabel label1 = new JLabel("Movie's Title: ");
+        JLabel label1 = new JLabel("Τίτλος Ταινίας: ");
         label1.setFont(new Font("Verdana", Font.PLAIN, 20));
         panel.add(label1);
         Dimension size1 = label1.getPreferredSize();
@@ -74,6 +73,8 @@ public class DeleteMovieFrame extends JFrame {
         });
 
         frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
     }
 
 }

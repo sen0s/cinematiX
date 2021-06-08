@@ -97,12 +97,13 @@ public class AddMovieFrame extends JInternalFrame {
         buttonBack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new DeleteMovieFrame();
             }
         });
 
 
         frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
     }
 
 

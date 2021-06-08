@@ -33,10 +33,15 @@ public class DeleteRoomFrame extends JFrame {
 
         removeBtn.addActionListener(listener);
 
+        ImageIcon icon = new ImageIcon("cinema_logo.jpg");
+        this.setIconImage(icon.getImage());
+
         this.setVisible(true);
-        this.setSize(400, 400);
+        this.setSize(400, 100);
         this.setContentPane(panel);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setTitle("Αφαίρεση Αίθουσας");
+        this.setLocationRelativeTo(null);
     }
 
     class ButtonListener implements ActionListener {

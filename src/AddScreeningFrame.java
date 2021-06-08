@@ -85,7 +85,9 @@ public class AddScreeningFrame  extends JFrame implements ActionListener{
 		
 		AddScreening.addActionListener(this);
 		Logout.addActionListener(this);
-		
+
+		ImageIcon icon = new ImageIcon("cinema_logo.jpg");
+		this.setIconImage(icon.getImage());
 		
 		
 		this.setSize(500,400);
@@ -100,6 +102,9 @@ public class AddScreeningFrame  extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if (e.getSource().equals(Logout)){
+			JFrame.dispose();
+		}
 		
 	}
 	

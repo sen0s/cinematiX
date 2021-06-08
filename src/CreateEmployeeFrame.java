@@ -142,8 +142,9 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		this.setVisible(true);
 		
 		this.setResizable(false);
-		this.setTitle("Entrance Frame");
-		this.setDefaultCloseOperation(MainFrame.EXIT_ON_CLOSE);
+		this.setTitle("Δημιουργία Λογαριασμού Χρήστη");
+		this.setDefaultCloseOperation(MainFrame.DISPOSE_ON_CLOSE);
+		this.setLocationRelativeTo(null);
 	}
 	
 	

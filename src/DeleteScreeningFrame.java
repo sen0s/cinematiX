@@ -3,11 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class DeleteScreeningFrame extends JFrame implements ActionListener {
 	JPanel panel;
@@ -58,13 +54,16 @@ public class DeleteScreeningFrame extends JFrame implements ActionListener {
 		
 		DELETE.addActionListener(this);
 		LOGOUT.addActionListener(this);
+
+		ImageIcon icon = new ImageIcon("cinema_logo.jpg");
+		this.setIconImage(icon.getImage());
 		
 		this.setSize(400,300);
 		//this.setIconImage(icon.getImage());
 		this.setContentPane(panel);
 		this.setVisible(true);
 		this.setResizable(false);
-		this.setTitle("Παράθυρο Υπαλλήλου");
+		this.setTitle("Ακύρωση Προβολής");
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
 	}

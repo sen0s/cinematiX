@@ -29,7 +29,7 @@ public class BookTicketFrame extends JFrame {
 	private JFrame frame = new JFrame();
     private ArrayList<String> roomIDs = new ArrayList<>();
 	
-	private ImageIcon img= new ImageIcon("ticket icon.png");
+	private ImageIcon img= new ImageIcon("cinema_logo.jpg");
 
     private ArrayList<String> moviesTitle = new ArrayList<>();
 	
@@ -47,7 +47,6 @@ public class BookTicketFrame extends JFrame {
         movieL = new JLabel("Ταινία: ");
         roomL = new JLabel("Αίθουσα: ");
         seatL = new JLabel("Θέση: ");
-        nameL = new JLabel("Ονoμ/μο: ");
         String[] array = moviesTitle.toArray(new String[Database.allMovies.size()]);
         movies = new JComboBox(array);
         backButton = new JButton("Πίσω");
@@ -55,7 +54,6 @@ public class BookTicketFrame extends JFrame {
         String[] array1 = roomIDs.toArray(new String[Database.allRooms.size()]);
         roomsCombo = new JComboBox(array1);
 
-        nameField= new JTextField("");
         normalT = new JRadioButton("Κανονικό");
         childT = new JRadioButton("Παιδικό");
         studentT = new JRadioButton("Φοιτητικό");
@@ -93,10 +91,6 @@ public class BookTicketFrame extends JFrame {
         Dimension size3 = seatL.getPreferredSize();
         seatL.setBounds(100, 70, size3.width, size3.height);
         
-        panel.add(nameL);
-        Dimension size4 = nameL.getPreferredSize();
-        nameL.setBounds(100, 100, size4.width, size4.height);
-        
         movies.setLocation(200, 10);
         movies.setSize(200, 20);
         panel.add(movies);
@@ -108,10 +102,6 @@ public class BookTicketFrame extends JFrame {
         seats.setLocation(200, 70);
         seats.setSize(200, 20);
         panel.add(seats);
-        
-        nameField.setLocation(200, 100);
-        nameField.setSize(200, 20);
-        panel.add(nameField);
         
         ButtonGroup buttonGroup = new ButtonGroup();
         buttonGroup.add(normalT);

@@ -39,10 +39,15 @@ public class AddRoomFrame extends JFrame {
         addRoomBtn.setBounds(120, 160, 110, 25);
         addRoomBtn.addActionListener(listener);
 
+        ImageIcon icon = new ImageIcon("cinema_logo.jpg");
+        this.setIconImage(icon.getImage());
+
         this.setVisible(true);
         this.setSize(400, 400);
         this.setContentPane(panel);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setTitle("Δημιουργία Αίθουσας");
     }
 
     class ButtonListener implements ActionListener {
