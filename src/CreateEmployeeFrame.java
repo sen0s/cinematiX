@@ -1,12 +1,14 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -23,10 +25,13 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 	private JButton create , back,exit;
 	private String man,woman,nonofabove;
 	private JFrame frame;
+	HashMap<String,String> logininfo = new HashMap<String,String>();
+	IDandPasswords idandPasswords = new IDandPasswords();
 	
 	
 	
 	CreateEmployeeFrame(){
+		
 		//αρχικοποιηση string
 		man = "Man";
 		woman = "Woman";
@@ -128,6 +133,7 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		
 		create.addActionListener(this);
 		back.addActionListener(this);
+		exit.addActionListener(this);
 		ImageIcon  icon = new ImageIcon("cinema-logo_23-2147503279.jpg");
 		
 		this.setSize(350,350);
@@ -148,9 +154,14 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		String password = String.valueOf(Password.getPassword());
 		if (e.getSource().equals(create))
 		{
-             
+			idandPasswords.AddInfo(userID, password);
+			JOptionPane.showMessageDialog(null,"Employee added succesfully!!!"); 
 		}
 		if(e.getSource().equals(back))
+		{
+			frame.dispose();
+		}
+		if(e.getSource().equals(exit))
 		{
 			frame.dispose();
 		}

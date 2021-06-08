@@ -1,9 +1,11 @@
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class AdminFrame extends JFrame{
+
+public class AdminFrame extends JFrame implements ActionListener{
 	
 	
 
@@ -21,9 +23,12 @@ public class AdminFrame extends JFrame{
 	private JPanel panel;
 	private JFrame frame;
 	
+
+	
 	
 	public AdminFrame()
 	{
+	
 		panel = new JPanel();
 		createLabel = new JLabel("Δημιουργία νέου λογαρισμού χρήστη");
 		createBtn = new JButton("Δημιουργία");
@@ -71,13 +76,13 @@ public class AdminFrame extends JFrame{
 		
 
 		
-		ButtonListener listener = new ButtonListener();
-		createBtn.addActionListener(listener);
-		deleteBtn.addActionListener(listener);
-		statBtn.addActionListener(listener);
-		logoutBtn.addActionListener(listener);
-		createRoomBtn.addActionListener(listener);
-		deleteRoomBtn.addActionListener(listener);
+		//ButtonListener listener = new ButtonListener();
+		createBtn.addActionListener(this);
+		deleteBtn.addActionListener(this);
+		statBtn.addActionListener(this);
+		logoutBtn.addActionListener(this);
+		createRoomBtn.addActionListener(this);
+		deleteRoomBtn.addActionListener(this);
 
 
 
@@ -90,7 +95,7 @@ public class AdminFrame extends JFrame{
 		this.setLocationRelativeTo(null);
 	}
 	
-	class ButtonListener implements ActionListener {
+	
 
 
 		@Override
@@ -98,7 +103,7 @@ public class AdminFrame extends JFrame{
 		{
 			if (e.getSource().equals(createBtn))
 			{
-                 new CreateEmployeeFrame();
+                new CreateEmployeeFrame(); 
 			}
 			else if (e.getSource().equals(deleteBtn))
 			{
@@ -118,16 +123,5 @@ public class AdminFrame extends JFrame{
 			else if(e.getSource().equals(deleteRoomBtn)){
 				new DeleteRoomFrame();
 			}
-		
-			
-			
-			
-			
-		}
-		
-		
-		
-	}
-	
-
+	 }
 }

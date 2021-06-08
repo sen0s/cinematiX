@@ -18,6 +18,7 @@ public class MainFrame  extends JFrame {
 	private JButton employeeLoginBtn, adminLoginBtn, exitBtn;
 	private ButtonListener listener;
 	public int String;
+	IDandPasswords idandPasswords = new IDandPasswords();
 	
 	MainFrame(){
 		/*
@@ -31,6 +32,7 @@ public class MainFrame  extends JFrame {
 		panel2 = new JPanel();
 		panel3 = new JPanel();
 		listener = new ButtonListener();
+	
 
 		/*
 		 * δεσμευση-αρχικοποιηση των JButtons και καθορισμος του text-size
@@ -96,7 +98,7 @@ public class MainFrame  extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			
 		    if ( e.getSource().equals(employeeLoginBtn) ){
-		    	IDandPasswords idandPasswords = new IDandPasswords();
+		    	
 				new EmployeeLoginFrame(idandPasswords.getLoginInfo());
 			}
 			if ( e.getSource().equals(adminLoginBtn) ){

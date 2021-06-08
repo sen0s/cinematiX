@@ -13,6 +13,7 @@ public class AdminLoginFrame extends JFrame {
 	private JFrame frame = this;
 	private ButtonListener listener;
 
+
 	
 	AdminLoginFrame() {
 		panel = new JPanel();

@@ -2,7 +2,7 @@
 import java.util.HashMap;
 
 public class IDandPasswords {
-	HashMap<String,String> logininfo = new HashMap<String,String>();
+	static HashMap<String,String> logininfo = new HashMap<String,String>();
 	
 	public IDandPasswords()
 	{
@@ -14,6 +14,11 @@ public class IDandPasswords {
 	public HashMap getLoginInfo()
 	{
 		return logininfo;
+	}
+	
+	public void AddInfo(String a,String b){
+		logininfo.put(a, b);
+		System.out.println(logininfo);
 	}
 
 }
