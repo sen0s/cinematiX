@@ -73,16 +73,22 @@ public class EmployeeLoginFrame extends JFrame {
 						frame.dispose();
 						new EmployeeFrame();
 					}
-			    }
-				else {
-					JOptionPane.showMessageDialog(null, "Wrong Password or ID");
-				}
-			
-	         }
-			 if ( e.getSource().equals(abortBtn) ){
+				    else {
+					JOptionPane.showMessageDialog(null, "Wrong Password"); 
+				    }
+			   }
+			   else {
+				   JOptionPane.showMessageDialog(null, "Wrong Username");	
+			   }
+		  }
+		  if ( e.getSource().equals(abortBtn) ){
 				frame.dispose();
 			 }
-
+		   
 		}
 	}
 }
+
+				
+	
+
