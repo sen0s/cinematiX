@@ -6,10 +6,19 @@ import java.util.HashMap;
 public class Room implements Serializable {
 
     private String RoomID;
-    private int capacity;
+    public HashMap<Date, Movie> getScreenings() {
+		return Screenings;
+	}
+
+	public void setScreenings(HashMap<Date, Movie> screenings) {
+		Screenings = screenings;
+	}
+
+	private int capacity;
     private ArrayList<Boolean> seats;
     private HashMap<Date,Room> Reservation;
-
+    private HashMap<Date,Movie> Screenings;
+    
     public ArrayList<Boolean> getSeats() {
 		return seats;
 	}
@@ -33,7 +42,7 @@ public class Room implements Serializable {
 
         this.seats = new ArrayList<>();
         for(int i=0;i<capacity;i++) {
-            this.seats.add(true); //True σημαινει οτι η θεση ειναι αρχικα αδεια
+            this.seats.add(true); //True ΟƒΞ·ΞΌΞ±ΞΉΞ½ΞµΞΉ ΞΏΟ„ΞΉ Ξ· ΞΈΞµΟƒΞ· ΞµΞΉΞ½Ξ±ΞΉ Ξ±Ο�Ο‡ΞΉΞΊΞ± Ξ±Ξ΄ΞµΞΉΞ±
         }
 
         for(Boolean b : seats) {

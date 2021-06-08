@@ -1,3 +1,4 @@
+import java.awt.Component;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ public class Movie implements Serializable {
     private String title;
     private String duration;
     private String genre;
-    private HashMap<Date,Room> date_time = new HashMap<Date,Room>();
+    private HashMap<Date,Room> Screenings = new HashMap<Date,Room>();
 
     Movie(){}
     
@@ -27,7 +28,7 @@ public class Movie implements Serializable {
         return genre;
     }
     public HashMap<Date,Room> getDayTime(){
-        return date_time;
+        return Screenings;
     }
 
 

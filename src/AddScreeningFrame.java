@@ -1,6 +1,8 @@
 import java.awt.Dimension;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
+
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
@@ -81,8 +83,8 @@ public class AddScreeningFrame  extends JFrame implements ActionListener{
 			panel.add(Logout);
 			Logout.setBounds(170,300,100,25);
 		
-		
-		
+		AddScreening.addActionListener(this);
+		Logout.addActionListener(this);
 		
 		
 		

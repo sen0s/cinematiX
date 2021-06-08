@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class AddRoomFrame extends JFrame {
 
     private JPanel panel;
-    private JLabel roomIDLabel;
+    private JLabel roomIDLabel,Title;
     private JTextField roomIDField;
     private JLabel roomCapacityLabel;
     private JTextField roomCapacityField;
@@ -15,6 +15,8 @@ public class AddRoomFrame extends JFrame {
 
     public AddRoomFrame() {
         panel = new JPanel();
+        panel.setLayout(null);
+        Title = new JLabel("ΣΥΜΠΛΗΡΩΣΗ ΣΤΟΙΧΕΙΩΝ");
         roomIDLabel = new JLabel("Αναγρνωριστικό αίθουσας");
         roomIDField = new JTextField(10);
         roomCapacityLabel = new JLabel("Χωρητικότητα αίθουσας");
@@ -22,13 +24,19 @@ public class AddRoomFrame extends JFrame {
         addRoomBtn = new JButton("Προσθήκη");
         listener = new ButtonListener();
 
-
+        panel.add(Title);
         panel.add(roomIDLabel);
         panel.add(roomIDField);
         panel.add(roomCapacityLabel);
         panel.add(roomCapacityField);
         panel.add(addRoomBtn);
-
+        
+        Title.setBounds(110, 10, 200, 20);
+        roomIDLabel.setBounds(40, 60, 200, 25);
+        roomIDField.setBounds(200, 60, 120, 25);
+        roomCapacityLabel.setBounds(40,110,200,25);
+        roomCapacityField.setBounds(200, 110, 120, 25);
+        addRoomBtn.setBounds(120, 160, 110, 25);
         addRoomBtn.addActionListener(listener);
 
         this.setVisible(true);
