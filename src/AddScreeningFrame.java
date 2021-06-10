@@ -1,5 +1,7 @@
 import java.awt.Dimension;
 import java.awt.event.*;
+import java.sql.Date;
+
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
 
@@ -8,7 +10,7 @@ import java.time.Month;
 import java.time.Year;
 import java.util.Calendar;
 
-public class AddScreeningFrame  extends JFrame implements ActionListener{
+public class AddScreeningFrame  extends JFrame {
 	JLabel Tile,SelectMovie,Hour_Month,SelectOptions,ROOM;
 	JButton AddScreening,Logout;
 	JComboBox<String> Movies;
@@ -20,6 +22,9 @@ public class AddScreeningFrame  extends JFrame implements ActionListener{
 	
 	AddScreeningFrame(){
 		 LocalDate currentdate = LocalDate.now();
+		 Calendar cal = Calendar.getInstance();
+		 int res = cal.getActualMaximum(Calendar.DATE);
+		 
 		panel  =  new JPanel();
 		panel.setLayout(null);
 		Movies = new JComboBox<>();
@@ -37,6 +42,7 @@ public class AddScreeningFrame  extends JFrame implements ActionListener{
 			String title = movie.getTitle();
 			Movies.addItem(title);
 		}
+		Movies.setSelectedIndex(0);
 		Movies.setPreferredSize(new Dimension(50,25));
 		panel.add(SelectMovie);
 		panel.add(Movies);
@@ -44,17 +50,27 @@ public class AddScreeningFrame  extends JFrame implements ActionListener{
 		Movies.setBounds(170, 60, 100, 25);
 		
 		
-		Hour_Month  =  new JLabel("Select Hour/Month:");
+		Hour_Month  =  new JLabel("Hour/Day of " + currentdate.getMonth());
 		Hour = new JComboBox<String>();
 		Hour.setPreferredSize(new Dimension(50,25));
 		Hour.addItem("17");
 		Hour.addItem("19");
 		Hour.addItem("21");
 		Hour.addItem("23");
+		Hour.setSelectedIndex(0);
 		Month =  new JComboBox<String>();
-		Hour.setPreferredSize(new Dimension(50,25));
+		
+		Month.setPreferredSize(new Dimension(50,25));
+		int day;
+		day = currentdate.getDayOfMonth();
+		int resu = res-day;
+
+		for(int i=0;i<=resu;i++) {	
+				String DAY = Integer.toString(day);
+				Month.addItem(DAY);
+				day++;
 			
-		Month.addItem("Month");
+		}
 		panel.add(Hour);
 		panel.add(Hour_Month);
 		panel.add(Month);
@@ -77,17 +93,54 @@ public class AddScreeningFrame  extends JFrame implements ActionListener{
 		
 		AddScreening =  new JButton("AddScreening");
 		panel.add(AddScreening);
-		AddScreening.setBounds(155,240,140,25);
+		AddScreening.setBounds(250,300,140,25);
 		
 		Logout =  new JButton("Logout");
 			panel.add(Logout);
-			Logout.setBounds(170,300,100,25);
+			Logout.setBounds(80,300,100,25);
 		
-		AddScreening.addActionListener(this);
-		Logout.addActionListener(this);
+		AddScreening.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try{
+					Movie moviesel = Database.getMovieFromTitle((String)Movies.getSelectedItem());
+					System.out.println(moviesel.getTitle());
+					Room roomsel = Database.getRoomFromID((String)Rooms.getSelectedItem());
+					String hour = (String)Hour.getSelectedItem();
+					String day = (String)Month.getSelectedItem();
 
-		ImageIcon icon = new ImageIcon("cinema_logo.jpg");
-		this.setIconImage(icon.getImage());
+					int flag = 0;
+					String datesel1 = Integer.toString(currentdate.getYear())+"/"+Integer.toString(currentdate.getMonthValue())+"/"+day+" Hour:"+hour+":00";
+					System.out.println(datesel1);
+							for(String date:roomsel.getScreenings()) {
+								if(date.equals(datesel1)) {
+									flag=1;
+								}
+							}
+								if(flag==0) {
+									moviesel.AddScreening(datesel1, roomsel);
+									roomsel.AddDateScreening(datesel1);
+										JOptionPane.showMessageDialog(null, "Movie inserted Successfully");
+										dispose();
+										new EmployeeFrame();
+								}
+							}
+					
+			catch(Exception e1) {
+				JOptionPane.showMessageDialog(null,e1);
+				}
+			}
+		});
+		Logout.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JFrame.dispose();
+			}
+		});
 		
 		
 		this.setSize(500,400);
@@ -99,13 +152,6 @@ public class AddScreeningFrame  extends JFrame implements ActionListener{
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
 	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		if (e.getSource().equals(Logout)){
-			JFrame.dispose();
-		}
-		
-	}
+
 	
 }

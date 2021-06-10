@@ -3,12 +3,13 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 public class Movie implements Serializable {
     private String title;
     private String duration;
     private String genre;
-    private HashMap<Date,Room> Screenings = new HashMap<Date,Room>();
+    private HashMap<String,Room> Screenings = new HashMap<String,Room>();
 
     Movie(){}
     
@@ -27,13 +28,31 @@ public class Movie implements Serializable {
     public String getGenre(){
         return genre;
     }
-    public HashMap<Date,Room> getDayTime(){
-        return Screenings;
+
+
+
+    public HashMap<String, Room> getScreenings() {
+		return Screenings;
+	}
+    
+    public void delscreen(String date) {
+    	Set<String> keys = Screenings.keySet();
+    	for(String key:keys) {
+    		if(key.equals(date)) {
+    			Screenings.remove(key);
+    		}
+    	}
     }
+    
+	public void setScreenings(HashMap<String, Room> screenings) {
+		Screenings = screenings;
+	}
+	
+	public void AddScreening(String date,Room room) {
+		Screenings.put(date, room);
+	}
 
-
-
-    public void setTitle(String title){
+	public void setTitle(String title){
         this.title=title;
     }
     public void setDuration(String duration){
@@ -42,9 +61,7 @@ public class Movie implements Serializable {
     public void setGenre(String genre){
         this.genre=genre;
     }
-    public void setDayTime(ArrayList<String> dates){
-        //date_time = dates;
-    }
+
 
 
 }

@@ -6,46 +6,53 @@ import java.util.HashMap;
 public class Room implements Serializable {
 
     private String RoomID;
-    public HashMap<Date, Movie> getScreenings() {
-		return Screenings;
-	}
-
-	public void setScreenings(HashMap<Date, Movie> screenings) {
-		Screenings = screenings;
-	}
-
-	private int capacity;
+    private int capacity;
     private ArrayList<Boolean> seats;
     private HashMap<Date,Room> Reservation;
-    private HashMap<Date,Movie> Screenings;
+    private ArrayList<String> Screenings;
     
-    public ArrayList<Boolean> getSeats() {
-		return seats;
-	}
-
-	public void setSeats(ArrayList<Boolean> seats) {
-		this.seats = seats;
-	}
-
-	public HashMap<Date, Room> getReservation() {
-		return Reservation;
-	}
-
-	public void setReservation(HashMap<Date, Room> reservation) {
-		Reservation = reservation;
-	}
 
 	public Room (String RoomID,int capacity) {
-
+		Screenings = new ArrayList<String>();
+		Reservation = new HashMap<Date,Room>();
         this.capacity =  capacity;
         this.RoomID =  RoomID;
 
         this.seats = new ArrayList<>();
         for(int i=0;i<capacity;i++) {
-            this.seats.add(true); //True ΟƒΞ·ΞΌΞ±ΞΉΞ½ΞµΞΉ ΞΏΟ„ΞΉ Ξ· ΞΈΞµΟƒΞ· ΞµΞΉΞ½Ξ±ΞΉ Ξ±Ο�Ο‡ΞΉΞΊΞ± Ξ±Ξ΄ΞµΞΉΞ±
+            this.seats.add(true); 
         }
 
+        for(Boolean b : seats) {
+            System.out.println(b);
+        }
     }
+	  public ArrayList<String> getScreenings() {
+			return Screenings;
+		}
+
+		public void setScreenings(ArrayList<String> screenings) {
+			Screenings = screenings;
+		}
+		
+		public void AddDateScreening(String date) {
+			Screenings.add(date);
+		}
+	    public ArrayList<Boolean> getSeats() {
+			return seats;
+		}
+
+		public void setSeats(ArrayList<Boolean> seats) {
+			this.seats = seats;
+		}
+
+		public HashMap<Date, Room> getReservation() {
+			return Reservation;
+		}
+
+		public void setReservation(HashMap<Date, Room> reservation) {
+			Reservation = reservation;
+		}
 
     public int getCapacity() {
         return capacity;
@@ -64,7 +71,7 @@ public class Room implements Serializable {
     }
 
     public void reserveSeat(int seatNumber) {
-        seats.set(seatNumber-1, false);
+        seats.add(seatNumber, false);
     }
 
     public ArrayList<Integer> getEmptySeats() {
@@ -78,6 +85,5 @@ public class Room implements Serializable {
 
         return emptySeats;
     }
-
 }
 

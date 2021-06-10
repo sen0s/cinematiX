@@ -2,14 +2,21 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Set;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
-public class DeleteScreeningFrame extends JFrame implements ActionListener {
+public class DeleteScreeningFrame extends JFrame {
 	JPanel panel;
 	JLabel  Select,title,date;
 	JComboBox<String> Movies;
-	JComboBox<Date> Dates;
+	JComboBox<String> Dates;
 	JFrame JFrame = this;
 	JButton DELETE,LOGOUT;
 	
@@ -29,53 +36,81 @@ public class DeleteScreeningFrame extends JFrame implements ActionListener {
 			String title = movie.getTitle();
 			Movies.addItem(title);
 		}
+		Movies.setSelectedIndex(0);
 		Movies.setPreferredSize(new Dimension(50,25));
 		panel.add(Select);
 		panel.add(Movies);
 		Select.setBounds(50,60,100,25);
 		Movies.setBounds(170, 60, 100, 25);
 		
-		
 		date = new JLabel("Delete Date:");
 		panel.add(date);
 		date.setBounds(50,120,250,25);
 		
-		Dates = new JComboBox<Date>();
+		Dates = new JComboBox<String>();
 		panel.add(Dates);
 		Dates.setBounds(170, 120, 100, 25);
+		Movies.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Movie moviesel = Database.getMovieFromTitle((String)Movies.getSelectedItem());
+				Set<String> keys = moviesel.getScreenings().keySet();
+				for(String key:keys) {
+					System.out.println();
+					Dates.addItem(key);
+				}
+			}
+		});
 		
 		DELETE = new JButton("DELETE");
 		panel.add(DELETE);
-		DELETE.setBounds(140,180,100,25);
+		DELETE.setBounds(200,180,100,25);
 		
 		LOGOUT =  new JButton("Logout");
 		panel.add(LOGOUT);
-		LOGOUT.setBounds(140,220,100,25);
+		LOGOUT.setBounds(60,180,100,25);
 		
-		DELETE.addActionListener(this);
-		LOGOUT.addActionListener(this);
+		DELETE.addActionListener(new ActionListener() {
 
-		ImageIcon icon = new ImageIcon("cinema_logo.jpg");
-		this.setIconImage(icon.getImage());
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				try{
+					Movie MovieSel =  Database.getMovieFromTitle((String)Movies.getSelectedItem());
+				
+					String Date = (String)Dates.getSelectedItem();
+					System.out.println(Date);
+					MovieSel.delscreen(Date);
+					JOptionPane.showMessageDialog(null,"Success delete of Screening");
+					new EmployeeFrame();
+		}catch(Exception e1) {
+			JOptionPane.showMessageDialog(null,e1);
+			}
+		}
+			
+				});
+		LOGOUT.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFrame.dispose();
+				
+			}
+		});
 		
 		this.setSize(400,300);
 		//this.setIconImage(icon.getImage());
 		this.setContentPane(panel);
 		this.setVisible(true);
 		this.setResizable(false);
-		this.setTitle("Ακύρωση Προβολής");
+		this.setTitle("Παράθυρο Υπαλλήλου");
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
 	}
 	
 	
 		
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-			if ( e.getSource().equals(LOGOUT) ) {
-				JFrame.dispose();
-			}
-	}
 
 }
