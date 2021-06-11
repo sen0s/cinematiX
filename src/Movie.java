@@ -43,6 +43,11 @@ public class Movie implements Serializable {
     		}
     	}
     }
+
+    public void printScreenings() {
+
+    }
+
     
 	public void setScreenings(HashMap<String, Room> screenings) {
 		Screenings = screenings;

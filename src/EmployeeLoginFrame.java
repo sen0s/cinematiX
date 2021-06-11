@@ -1,7 +1,5 @@
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 import javax.swing.*;
 
@@ -13,12 +11,12 @@ public class EmployeeLoginFrame extends JFrame {
 	private JPanel panel;
 	private JFrame frame = this;
 	private ButtonListener listener;
-	HashMap<String,String> logininfo = new HashMap<String,String>();
+	//HashMap<String,String> logininfo = new HashMap<String,String>();
 	 
 	
-	EmployeeLoginFrame(HashMap<String,String> loginInfoOriginal){
+	EmployeeLoginFrame(){
 		
-		logininfo = loginInfoOriginal;
+		// logininfo = loginInfoOriginal;
 
 		panel = new JPanel();
 		panel.setLayout(null);
@@ -68,8 +66,8 @@ public class EmployeeLoginFrame extends JFrame {
 			if ( e.getSource().equals(loginBtn) ){
 				String userID = userIDField.getText();
 				String password = String.valueOf(userPasswordField.getPassword());
-				if(logininfo.containsKey(userID)) {
-					if(logininfo.get(userID).equals(password)) {
+				if(Database.allCredentials.containsKey(userID)) {
+					if(Database.allCredentials.get(userID).equals(password)) {
 						frame.dispose();
 						new EmployeeFrame();
 					}

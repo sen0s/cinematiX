@@ -69,10 +69,10 @@ public class AdminLoginFrame extends JFrame {
 				String userID = usernameField.getText();
 				String password = String.valueOf(passwordField.getPassword());
 				if ( e.getSource().equals(loginBtn) ){
-					if(userID.equals("Admin") && password.equals("111"))
+					if(userID.equals("admin") && password.equals("admin"))
 					{
-					 new AdminFrame();
-					 frame.dispose();
+					 	new AdminFrame();
+					 	frame.dispose();
 					}
 					else
 					{

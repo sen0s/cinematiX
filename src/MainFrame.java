@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 import javax.swing.*;
@@ -18,7 +19,7 @@ public class MainFrame  extends JFrame {
 	private JButton employeeLoginBtn, adminLoginBtn, exitBtn;
 	private ButtonListener listener;
 	public int String;
-	IDandPasswords idandPasswords = new IDandPasswords();
+	//IDandPasswords idandPasswords = new IDandPasswords();
 	
 	MainFrame(){
 		/*
@@ -98,43 +99,13 @@ public class MainFrame  extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			
 		    if ( e.getSource().equals(employeeLoginBtn) ){
-		    	
-				new EmployeeLoginFrame(idandPasswords.getLoginInfo());
+				new EmployeeLoginFrame();
 			}
 			if ( e.getSource().equals(adminLoginBtn) ){
 				new AdminLoginFrame();
 			}
 			if ( e.getSource().equals(exitBtn) ){
-
-				try {
-					FileOutputStream moviesOut = new FileOutputStream("allMovies.ser");
-					moviesOut.write("".getBytes());
-					ObjectOutputStream mOut = new ObjectOutputStream(moviesOut);
-					mOut.writeObject(Database.allMovies);
-
-					FileOutputStream roomsOut = new FileOutputStream("allRooms.ser");
-					roomsOut.write("".getBytes());
-					ObjectOutputStream rOut = new ObjectOutputStream(roomsOut);
-					rOut.writeObject(Database.allRooms);
-
-					FileOutputStream reservationsOut = new FileOutputStream("allReservations.ser");
-					reservationsOut.write("".getBytes());
-					ObjectOutputStream resOut = new ObjectOutputStream(reservationsOut);
-					resOut.writeObject(Database.allReservations);
-
-					mOut.close();
-					moviesOut.close();
-
-					rOut.close();
-					roomsOut.close();
-
-					resOut.close();
-					reservationsOut.close();
-				}
-				catch(IOException i) {
-					i.printStackTrace();
-				}
-
+				Database.storeData();
 				System.exit(1);
 			}
 		}

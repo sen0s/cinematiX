@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,8 +24,8 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 	private JButton create , back,exit;
 	private String man,woman,nonofabove;
 	private JFrame frame;
-	HashMap<String,String> logininfo = new HashMap<String,String>();
-	IDandPasswords idandPasswords = new IDandPasswords();
+	//HashMap<String,String> logininfo = new HashMap<String,String>();
+	//IDandPasswords idandPasswords = new IDandPasswords();
 	
 	
 	
@@ -155,8 +154,9 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		String password = String.valueOf(Password.getPassword());
 		if (e.getSource().equals(create))
 		{
-			idandPasswords.AddInfo(userID, password);
-			JOptionPane.showMessageDialog(null,"Employee added succesfully!!!"); 
+			Database.allCredentials.put(userID, password);
+//			idandPasswords.AddInfo(userID, password);
+			JOptionPane.showMessageDialog(null,"Ο υπάλληλος προστέθηκε με επιτυχία.");
 		}
 		if(e.getSource().equals(back))
 		{
