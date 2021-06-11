@@ -65,6 +65,22 @@ public class DeleteEmployeeFrame extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		String userID = UserName1.getText();
+		String password = Password1.getText();
+		if (e.getSource().equals(DELETE)){
+			if(Database.allCredentials.containsKey(userID)) {
+				if(Database.allCredentials.get(userID).equals(password)) {
+					Database.allCredentials.remove(userID);
+					JOptionPane.showMessageDialog(null,"The employee deleted successfully");
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"Wrong Username or Password");
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(null,"Wrong Username");
+			}
+		}
 		if (e.getSource().equals(Back)){
 			frame.dispose();
 		}
