@@ -2,6 +2,7 @@ import java.io.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class Database {
 
@@ -35,6 +36,19 @@ public class Database {
         }
 
         return selectedRoom;
+    }
+    
+    public static Reservation getReservationFromID(UUID ID) {
+    	Reservation selectedReservation = null;
+
+        for(Reservation r : allReservations){
+            if (ID == r.getReservationID()){
+            	selectedReservation = r;
+                break;
+            }
+        }
+
+        return selectedReservation;
     }
 
     public static void storeData() {
