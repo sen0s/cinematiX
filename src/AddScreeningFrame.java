@@ -50,7 +50,7 @@ public class AddScreeningFrame  extends JFrame {
 		Movies.setBounds(170, 60, 100, 25);
 		
 		
-		Hour_Month  =  new JLabel("Hour/Day of " + currentdate.getMonth());
+		Hour_Month  =  new JLabel("Ωρα/Μερα-" + currentdate.getMonth());
 		Hour = new JComboBox<String>();
 		Hour.setPreferredSize(new Dimension(50,25));
 		Hour.addItem("17");
@@ -78,7 +78,7 @@ public class AddScreeningFrame  extends JFrame {
 		Hour.setBounds(170, 120, 100, 25);
 		Month.setBounds(300, 120, 100, 25);
 		
-		ROOM =  new JLabel("Select Room");
+		ROOM =  new JLabel("Επιλογή Αίθουσας");
 		panel.add(ROOM);
 		
 		Rooms =  new JComboBox<String>();
@@ -91,11 +91,11 @@ public class AddScreeningFrame  extends JFrame {
 		ROOM.setBounds(40, 180, 250, 25);
 		Rooms.setBounds(170, 180, 100, 25);
 		
-		AddScreening =  new JButton("AddScreening");
+		AddScreening =  new JButton("Προσθήκη Προβολής");
 		panel.add(AddScreening);
-		AddScreening.setBounds(250,300,140,25);
+		AddScreening.setBounds(250,300,160,25);
 		
-		Logout =  new JButton("Logout");
+		Logout =  new JButton("Πίσω");
 			panel.add(Logout);
 			Logout.setBounds(80,300,100,25);
 		
@@ -122,9 +122,11 @@ public class AddScreeningFrame  extends JFrame {
 								if(flag==0) {
 									moviesel.AddScreening(datesel1, roomsel);
 									roomsel.AddDateScreening(datesel1);
-										JOptionPane.showMessageDialog(null, "Movie inserted Successfully");
+										JOptionPane.showMessageDialog(null, "Επιτυχής προσθήκη προβολής");
 										dispose();
-										new EmployeeFrame();
+								}
+								else {
+									JOptionPane.showMessageDialog(null,"Υπάρχη προβολή στην Αίθουσα την συγκεκριμένη ημερομηνία");
 								}
 							}
 					

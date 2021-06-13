@@ -26,11 +26,11 @@ public class DeleteScreeningFrame extends JFrame {
 		panel.setLayout(null);
 		
 		// TODO Auto-generated constructor stub
-		title =  new JLabel("SELECT THE FOLLOWING INFO'S");
+		title =  new JLabel("Συμπληρώστε τα παρακάτω");
 		panel.add(title);
 		title.setBounds(90,10,250,25);
 		
-		Select =  new JLabel("Select Movie:");
+		Select =  new JLabel("Επιλογή Ταινίας:");
 		Movies = new JComboBox<String>();
 		for(Movie movie:Database.allMovies) {
 			String title = movie.getTitle();
@@ -43,7 +43,7 @@ public class DeleteScreeningFrame extends JFrame {
 		Select.setBounds(50,60,100,25);
 		Movies.setBounds(170, 60, 100, 25);
 		
-		date = new JLabel("Delete Date:");
+		date = new JLabel("Ημερ/νία:");
 		panel.add(date);
 		date.setBounds(50,120,250,25);
 		
@@ -54,7 +54,8 @@ public class DeleteScreeningFrame extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				// TODO Auto-generated method stubF
+				Dates.removeAllItems();
 				Movie moviesel = Database.getMovieFromTitle((String)Movies.getSelectedItem());
 				Set<String> keys = moviesel.getScreenings().keySet();
 				for(String key:keys) {
@@ -64,11 +65,11 @@ public class DeleteScreeningFrame extends JFrame {
 			}
 		});
 		
-		DELETE = new JButton("DELETE");
+		DELETE = new JButton("Διαγραφή");
 		panel.add(DELETE);
 		DELETE.setBounds(200,180,100,25);
 		
-		LOGOUT =  new JButton("Logout");
+		LOGOUT =  new JButton("Πίσω");
 		panel.add(LOGOUT);
 		LOGOUT.setBounds(60,180,100,25);
 		
@@ -83,7 +84,7 @@ public class DeleteScreeningFrame extends JFrame {
 					String Date = (String)Dates.getSelectedItem();
 					System.out.println(Date);
 					MovieSel.delscreen(Date);
-					JOptionPane.showMessageDialog(null,"Success delete of Screening");
+					JOptionPane.showMessageDialog(null,"Επυτυχής Διαγραφή");
 					new EmployeeFrame();
 		}catch(Exception e1) {
 			JOptionPane.showMessageDialog(null,e1);

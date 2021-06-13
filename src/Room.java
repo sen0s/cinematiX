@@ -8,13 +8,13 @@ public class Room implements Serializable {
     private String RoomID;
     private int capacity;
     private ArrayList<Boolean> seats;
-    private HashMap<Date,Room> Reservation;
+    private HashMap<String,Room> Reservation;
     private ArrayList<String> Screenings;
     
 
 	public Room (String RoomID,int capacity) {
 		Screenings = new ArrayList<String>();
-		Reservation = new HashMap<Date,Room>();
+		Reservation = new HashMap<String,Room>();
         this.capacity =  capacity;
         this.RoomID =  RoomID;
 
@@ -46,11 +46,11 @@ public class Room implements Serializable {
 			this.seats = seats;
 		}
 
-		public HashMap<Date, Room> getReservation() {
+		public HashMap<String, Room> getReservation() {
 			return Reservation;
 		}
 
-		public void setReservation(HashMap<Date, Room> reservation) {
+		public void setReservation(HashMap<String, Room> reservation) {
 			Reservation = reservation;
 		}
 

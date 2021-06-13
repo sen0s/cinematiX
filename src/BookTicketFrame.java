@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Set;
 
 import javax.swing.*;
 
@@ -12,24 +13,26 @@ public class BookTicketFrame extends JFrame {
 	
 	
 	private JLabel movieL;
-	private JLabel roomL;
+	private JLabel Screenings;
 	private JLabel seatL;
 	private JLabel nameL;
-	private JComboBox movies;
-	private JComboBox seats;
+	private JLabel roomL;
+	private JTextField Room1;
+	private JComboBox<String> Movies;
+	private JComboBox<String> seats;
 	private JButton backButton;
 	private JButton bookButton;
-	private JComboBox roomsCombo;
+	private JComboBox<String> ScreeningsCombo;
 	private JTextField nameField;
 	private JRadioButton normalT;
 	private JRadioButton childT;
 	private JRadioButton studentT;
 	private JRadioButton multiT;
 	private JPanel panel;
-	private JFrame frame = new JFrame();
+	JFrame JFrame = this;
     private ArrayList<String> roomIDs = new ArrayList<>();
 	
-	private ImageIcon img= new ImageIcon("cinema_logo.jpg");
+	private ImageIcon img= new ImageIcon("ticket icon.png");
 
     private ArrayList<String> moviesTitle = new ArrayList<>();
 	
@@ -43,65 +46,88 @@ public class BookTicketFrame extends JFrame {
         for(Room r : Database.allRooms){
             roomIDs.add(r.getRoomID());
         }
-
+        Room1 = new JTextField();
+        roomL= new JLabel("Αίθουσα:");
         movieL = new JLabel("Ταινία: ");
-        roomL = new JLabel("Αίθουσα: ");
+        Screenings = new JLabel("Προβολή: ");
         seatL = new JLabel("Θέση: ");
-        String[] array = moviesTitle.toArray(new String[Database.allMovies.size()]);
-        movies = new JComboBox(array);
+        nameL = new JLabel("Ονoμ/μο: ");
+        Movies = new JComboBox<String>();
+		for(Movie movie:Database.allMovies) {
+			String title = movie.getTitle();
+			Movies.addItem(title);
+		}
         backButton = new JButton("Πίσω");
         bookButton = new JButton("Κράτηση");
-        String[] array1 = roomIDs.toArray(new String[Database.allRooms.size()]);
-        roomsCombo = new JComboBox(array1);
+    
+        ScreeningsCombo = new JComboBox<String>();
+        
+        
 
+        nameField= new JTextField("");
         normalT = new JRadioButton("Κανονικό");
         childT = new JRadioButton("Παιδικό");
         studentT = new JRadioButton("Φοιτητικό");
         multiT = new JRadioButton("Πολυτεκνικο");
 
-        seats = new JComboBox();
+        seats = new JComboBox<String>();
 		
 		ButtonListener listener = new ButtonListener();
 		bookButton.addActionListener(listener);
 		backButton.addActionListener(listener);
-
-        roomsCombo.addActionListener(listener);
+		Movies.addActionListener(listener);
+        ScreeningsCombo.addActionListener(listener);
 		
-		frame.setIconImage(img.getImage());
+		this.setIconImage(img.getImage());
+		this.setVisible(true);
+		this.setResizable(false);
+		this.setSize(450,450);
+		this.setTitle("Κράτηση Εισητηρίου");
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setLocationRelativeTo(null);
 		
-		frame.setVisible(true);
-		frame.setResizable(false);
-		frame.setSize(450,450);
-		frame.setTitle("Κράτηση Εισητηρίου");
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setLocationRelativeTo(null);
-		
-		JPanel panel = (JPanel) frame.getContentPane();
+		JPanel panel = (JPanel) this.getContentPane();
         panel.setLayout(null);
         
         panel.add(movieL);
         Dimension size1 = movieL.getPreferredSize();
         movieL.setBounds(100, 10, size1.width, size1.height);
         
+        panel.add(Screenings);
+        Dimension size2 = Screenings.getPreferredSize();
+        Screenings.setBounds(100, 40, size2.width, size2.height);
+        
         panel.add(roomL);
-        Dimension size2 = roomL.getPreferredSize();
-        roomL.setBounds(100, 40, size2.width, size2.height);
+        Dimension size5 = roomL.getPreferredSize();
+        roomL.setBounds(100, 70, size5.width, size5.height);
         
         panel.add(seatL);
         Dimension size3 = seatL.getPreferredSize();
-        seatL.setBounds(100, 70, size3.width, size3.height);
+        seatL.setBounds(100, 100, size3.width, size3.height);
         
-        movies.setLocation(200, 10);
-        movies.setSize(200, 20);
-        panel.add(movies);
+        panel.add(nameL);
+        Dimension size4 = nameL.getPreferredSize();
+        nameL.setBounds(100, 130, size4.width, size4.height);
         
-        roomsCombo.setLocation(200, 40);
-        roomsCombo.setSize(200, 20);
-        panel.add(roomsCombo);
+        Movies.setLocation(200, 10);
+        Movies.setSize(200, 20);
+        panel.add(Movies);
         
-        seats.setLocation(200, 70);
+        ScreeningsCombo.setLocation(200, 40);
+        ScreeningsCombo.setSize(200, 20);
+        panel.add(ScreeningsCombo);
+        
+        Dimension size6 = Room1.getPreferredSize();
+        Room1.setBounds(200, 70,size6.width,size6.height);
+        panel.add(Room1);
+        
+        seats.setLocation(200, 100);
         seats.setSize(200, 20);
         panel.add(seats);
+        
+        nameField.setLocation(200, 130);
+        nameField.setSize(200, 20);
+        panel.add(nameField);
         
         ButtonGroup buttonGroup = new ButtonGroup();
         buttonGroup.add(normalT);
@@ -139,10 +165,10 @@ public class BookTicketFrame extends JFrame {
 			if ( e.getSource().equals(bookButton)) {
 			    // Get movie from JComboBox
                 //String movie = String.valueOf(movies.getSelectedItem());
-			    Movie selectedMovie = Database.getMovieFromTitle((String)movies.getSelectedItem());
-                //String room = String.valueOf(roomsCombo.getSelectedItem());
-                Room selectedRoom = Database.getRoomFromID((String)roomsCombo.getSelectedItem());
-                int selectedSeat = Integer.parseInt(String.valueOf(seats.getSelectedItem()));
+			    Movie selectedMovie = Database.getMovieFromTitle((String)Movies.getSelectedItem());
+			    int SeelctedSeat = Integer.parseInt((String) seats.getSelectedItem());
+			    String Screening = (String)ScreeningsCombo.getSelectedItem();
+			    Room roomSelected = selectedMovie.getScreenings().get(Screening);
 
                 String ticketType;
                 if(normalT.isSelected()){
@@ -158,28 +184,45 @@ public class BookTicketFrame extends JFrame {
                     ticketType = "multi";
                 }
 
-                Database.allReservations.add(new Reservation(selectedMovie, selectedSeat, ticketType, selectedRoom));
-                selectedRoom.reserveSeat(selectedSeat);
-                seats.removeItem(String.valueOf(selectedSeat));
+                Database.allReservations.add(new Reservation(selectedMovie,SeelctedSeat, ticketType, roomSelected));
+                roomSelected.reserveSeat(SeelctedSeat-1);
                 JOptionPane.showMessageDialog(null, "Η κράτηση πραγματοποιήθηκε!");
+				JFrame.dispose();
 			}
 			else if ( e.getSource().equals(backButton) ){
-				frame.dispose();
+				JFrame.dispose();
 			}
-			else if(e.getSource().equals(roomsCombo)){
-                Room selectedRoom = Database.getRoomFromID((String)roomsCombo.getSelectedItem());
-                System.out.println(selectedRoom.getRoomID());
-                ArrayList<Integer> empty = selectedRoom.getEmptySeats();
-                String[] array = new String[empty.size()];
-                for(int j =0;j<empty.size();j++){
-                    array[j] = String.valueOf(empty.get(j));
-                    seats.addItem(array[j]);
-                    System.out.println(array[j]);
-                }
+			else if(e.getSource().equals(Movies)){
+				ScreeningsCombo.removeAllItems();
+				Movie selectedMovie = Database.getMovieFromTitle((String)Movies.getSelectedItem());
+                System.out.println(selectedMovie.getTitle());
+                System.out.println(selectedMovie.getTitle());
+                Set<String> keys = selectedMovie.getScreenings().keySet();
+				for(String key:keys) {
+					System.out.println();
+					ScreeningsCombo.addItem(key);
+				}
+				seats.removeAllItems();
+				
+			}
+			else if(e.getSource().equals(ScreeningsCombo)) {
+	                Movie selectedMovie = Database.getMovieFromTitle((String)Movies.getSelectedItem());
+					String SelectedScreening = (String) ScreeningsCombo.getSelectedItem();
+					Room roomSelected = selectedMovie.getScreenings().get(SelectedScreening);
+					Room1.setText(roomSelected.getRoomID());
+					seats.removeAllItems();
+			
+					ArrayList<Integer> empty = roomSelected.getEmptySeats();
+					for(int i=0;i<empty.size();i++) {
+						String seat = Integer.toString(empty.get(i));
+						seats.addItem(seat);
+					}
+                
                 seats.setSelectedIndex(0);
+				}
+			
             }
 		}
 		
 	}
-	
-}
+
