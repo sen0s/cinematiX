@@ -25,7 +25,7 @@ public class DeleteEmployeeFrame extends JFrame implements ActionListener {
 		
 		Username = new JLabel("Username:");
 		Password = new JLabel("Password:");
-		Title = new JLabel("Εισάγετε τις παρακάτω πληροφορίες");
+		Title = new JLabel("Καταχώρηση Πληροφοριών Υπαλλήλου");
 			
 			
 		UserName1= new JTextField(30);
@@ -72,14 +72,14 @@ public class DeleteEmployeeFrame extends JFrame implements ActionListener {
 			if(Database.allCredentials.containsKey(userID)) {
 				if(Database.allCredentials.get(userID).equals(password)) {
 					Database.allCredentials.remove(userID);
-					JOptionPane.showMessageDialog(null,"The employee deleted successfully");
+					JOptionPane.showMessageDialog(null,"Ο υπάλληλος διαγράφηκε επιτυχώς");
 				}
 				else {
-					JOptionPane.showMessageDialog(null,"Wrong Username or Password");
+					JOptionPane.showMessageDialog(null,"Λανθασμένο Username ή Password");
 				}
 			}
 			else {
-				JOptionPane.showMessageDialog(null,"Wrong Username");
+				JOptionPane.showMessageDialog(null,"Λανθασμένο Username");
 			}
 		}
 		if (e.getSource().equals(Back)){

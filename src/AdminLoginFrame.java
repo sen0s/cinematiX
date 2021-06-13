@@ -27,21 +27,21 @@ public class AdminLoginFrame extends JFrame {
 		panel.add(abortBtn);
 		abortBtn.setBounds(120,70,80,25);
 
-		usernameLabel = new JLabel("Όνομα Χρήστη");
+		usernameLabel = new JLabel("Username");
 		panel.add(usernameLabel);
 		usernameLabel.setBounds(10,10,90,25);
 
-		passwordLabel = new JLabel("Συνθηματικό");
+		passwordLabel = new JLabel("Password");
 		panel.add(passwordLabel);
 		passwordLabel.setBounds(10,40,80,25);
 
 		usernameField = new JTextField();
 		panel.add(usernameField);
-		usernameField.setBounds(105,13,150,20);
+		usernameField.setBounds(80,13,150,20);
 
 		passwordField = new JPasswordField();
 		panel.add(passwordField);
-		passwordField.setBounds(105,43,120,20);
+		passwordField.setBounds(80,43,120,20);
 
 
 
@@ -76,7 +76,7 @@ public class AdminLoginFrame extends JFrame {
 					}
 					else
 					{
-					  JOptionPane.showMessageDialog(null, "Wrong Password or ID");
+					  JOptionPane.showMessageDialog(null, "Λανθασμένο Password ή Username");
 					}
 				}
 				if ( e.getSource().equals(abortBtn) ){

@@ -33,21 +33,21 @@ public class EmployeeLoginFrame extends JFrame {
 		abortBtn.setBounds(120,70,80,25);
 		abortBtn.addActionListener(listener);
 
-		usernameLabel = new JLabel("Όνομα Χρήστη");
+		usernameLabel = new JLabel("Username");
 		panel.add(usernameLabel);
 		usernameLabel.setBounds(10,10,90,25);
 
-		passwordLabel = new JLabel("Συνθηματικό");
+		passwordLabel = new JLabel("Password");
 		panel.add(passwordLabel);
 		passwordLabel.setBounds(10,40,80,25);
 
 		userIDField = new JTextField();
 		panel.add(userIDField);
-		userIDField.setBounds(105,13,150,20);
+		userIDField.setBounds(80,13,150,20);
 
 		
 		panel.add(userPasswordField);
-		userPasswordField.setBounds(105,43,120,20);
+		userPasswordField.setBounds(80,43,120,20);
 		
 		ImageIcon  icon = new ImageIcon("cinema_logo.jpg");
 		this.setSize(350, 150);
@@ -72,11 +72,11 @@ public class EmployeeLoginFrame extends JFrame {
 						new EmployeeFrame();
 					}
 				    else {
-					JOptionPane.showMessageDialog(null, "Wrong Password"); 
+					JOptionPane.showMessageDialog(null, "Λανθασμένο Password"); 
 				    }
 			   }
 			   else {
-				   JOptionPane.showMessageDialog(null, "Wrong Username");	
+				   JOptionPane.showMessageDialog(null, "Λανθασμένο Username");	
 			   }
 		  }
 		  if ( e.getSource().equals(abortBtn) ){

@@ -26,13 +26,13 @@ public class DeleteMovieFrame extends JFrame {
         Dimension size1 = label1.getPreferredSize();
         label1.setBounds(20, 25, size1.width, size1.height);
 
-        JButton DeleteButton = new JButton("Delete");
+        JButton DeleteButton = new JButton("Διαγραφή");
         DeleteButton.setLocation(330, 150);
         DeleteButton.setSize(100, 30);
         panel.add(DeleteButton);
 
 
-        JButton buttonBack = new JButton("back");
+        JButton buttonBack = new JButton("Πίσω");
         buttonBack.setLocation(20, 150);
         buttonBack.setSize(100, 30);
         panel.add(buttonBack);
@@ -56,7 +56,7 @@ public class DeleteMovieFrame extends JFrame {
                     for(int i = 0; i< Database.allMovies.size(); i++){
                         if(Database.allMovies.get(i).getTitle() == title){
                             Database.allMovies.remove(i);
-                            JOptionPane.showMessageDialog(null, "Movie deleted Successfully");
+                            JOptionPane.showMessageDialog(null, "Η ταινία διαγράφηκε επιτυχώς");
                         }
                     }
 

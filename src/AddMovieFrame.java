@@ -13,33 +13,32 @@ public class AddMovieFrame extends JInternalFrame {
 
         newMovie = new Movie();
 
-        JFrame frame = new JFrame("Insert Movie");
+        JFrame frame = new JFrame("Καταχώρηση Ταινίας");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(420, 420);
         frame.setLocation(300, 200);
         JPanel panel = (JPanel) frame.getContentPane();
         panel.setLayout(null);
 
-        JLabel label1 = new JLabel("Movie Insert");
-        label1.setFont(new Font("Tahoma", Font.BOLD, 23));
+        JLabel label1 = new JLabel("Συμπληρώστε τα παρακάτω στοιχεία");
         panel.add(label1);
         Dimension size1 = label1.getPreferredSize();
         label1.setBounds(100, 20, size1.width, size1.height);
 
-        JLabel label2 = new JLabel("Movie's name: ");
+        JLabel label2 = new JLabel("Όνομα: ");
         panel.add(label2);
         Dimension size2 = label2.getPreferredSize();
-        label2.setBounds(40, 90, size2.width, size2.height);
+        label2.setBounds(95, 90, size2.width, size2.height);
 
-        JLabel label3 = new JLabel("type of movie: ");
+        JLabel label3 = new JLabel("Είδος: ");
         panel.add(label3);
         Dimension size3 = label3.getPreferredSize();
-        label3.setBounds(40, 130, size3.width, size3.height);
+        label3.setBounds(95, 130, size3.width, size3.height);
 
-        JLabel label4 = new JLabel("duration: ");
+        JLabel label4 = new JLabel("Διάρκεια: ");
         panel.add(label4);
         Dimension size4 = label4.getPreferredSize();
-        label4.setBounds(67, 165, size4.width, size4.height);
+        label4.setBounds(85, 165, size4.width, size4.height);
 
         JTextField tfTitle = new JTextField();
         tfTitle.setLocation(150, 88);
@@ -57,12 +56,12 @@ public class AddMovieFrame extends JInternalFrame {
         comboBox.setSize(150, 25);
         panel.add(comboBox);
 
-        JButton buttonInsert = new JButton("Insert Movie");
+        JButton buttonInsert = new JButton("Καταχώρηση");
         buttonInsert.setLocation(150, 200);
         buttonInsert.setSize(150, 25);
         panel.add(buttonInsert);
 
-        JButton buttonBack = new JButton("back");
+        JButton buttonBack = new JButton("Πίσω");
         buttonBack.setLocation(30, 300);
         buttonBack.setSize(80, 25);
         panel.add(buttonBack);
@@ -82,7 +81,7 @@ public class AddMovieFrame extends JInternalFrame {
 
                     Database.allMovies.add(newMovie);
 
-                    JOptionPane.showMessageDialog(null, "Movie inserted Successfully");
+                    JOptionPane.showMessageDialog(null, "Η ταινία καταχωρήθηκε επιτυχώς");
 
                     tfTitle.setText("");
                     tfDuration.setText("");

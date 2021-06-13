@@ -26,7 +26,7 @@ public class DeleteScreeningFrame extends JFrame {
 		panel.setLayout(null);
 		
 		// TODO Auto-generated constructor stub
-		title =  new JLabel("Συμπληρώστε τα παρακάτω");
+		title =  new JLabel("Συμπληρώστε τα παρακάτω στοιχεία");
 		panel.add(title);
 		title.setBounds(90,10,250,25);
 		
@@ -106,7 +106,7 @@ public class DeleteScreeningFrame extends JFrame {
 		this.setContentPane(panel);
 		this.setVisible(true);
 		this.setResizable(false);
-		this.setTitle("Παράθυρο Υπαλλήλου");
+		this.setTitle("Διαγραφή Προβολής");
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
 	}

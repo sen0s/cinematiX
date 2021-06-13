@@ -9,6 +9,8 @@ public class DeleteRoomFrame extends JFrame {
     private JLabel label;
     private JComboBox comboBox;
     private JButton removeBtn;
+    private JButton back;
+    private JFrame frame = this;
     private ArrayList<String> roomIDs;
     ButtonListener listener;
 
@@ -22,6 +24,7 @@ public class DeleteRoomFrame extends JFrame {
         panel = new JPanel();
         label = new JLabel("Επιλέξτε το αναγνωριστικό");
         removeBtn = new JButton("Αφαίρεση");
+        back = new JButton("Πίσω");
         listener = new ButtonListener();
 
         String[] array = roomIDs.toArray(new String[Database.allRooms.size()]);
@@ -30,8 +33,10 @@ public class DeleteRoomFrame extends JFrame {
         panel.add(label);
         panel.add(comboBox);
         panel.add(removeBtn);
+        panel.add(back);
 
         removeBtn.addActionListener(listener);
+        back.addActionListener(listener);
 
         ImageIcon icon = new ImageIcon("cinema_logo.jpg");
         this.setIconImage(icon.getImage());
@@ -55,10 +60,13 @@ public class DeleteRoomFrame extends JFrame {
                     if (ID.equals(r.getRoomID())){
                         Database.allRooms.remove(r);
                         comboBox.removeItem(ID);
-                        JOptionPane.showMessageDialog(null, "Room deleted Successfully");
+                        JOptionPane.showMessageDialog(null, "Η αίθουσα διαγράφηκε επιτυχώς");
                         break;
                     }
                 }
+            }
+            if (e.getSource().equals(back)){
+    			frame.dispose();
             }
         }
     }

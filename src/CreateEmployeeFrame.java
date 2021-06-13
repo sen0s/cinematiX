@@ -21,7 +21,7 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 	private JTextField Name,Surname,Phone_Number,Username;
 	private JPasswordField Password;
 	private JComboBox<String> Option;
-	private JButton create , back,exit;
+	private JButton create , back;
 	private String man,woman,nonofabove;
 	private JFrame frame;
 	//HashMap<String,String> logininfo = new HashMap<String,String>();
@@ -32,9 +32,9 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 	CreateEmployeeFrame(){
 		
 		//αρχικοποιηση string
-		man = "Man";
-		woman = "Woman";
-		nonofabove =  "None Of The Above";
+		man = "’νδρας";
+		woman = "Γυναίκα";
+		nonofabove =  "’λλο";
 		
 		//αρχικοποιηση panels και καθορισμος layout και color
 		
@@ -63,18 +63,17 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		
 		//αρχικοποιηση των JLabel,JButton,JTextField,ComboBox
 		//JLabel
-		name =  new JLabel("Name");
-			surname = new JLabel("Surname");
-				phone_number =  new JLabel("Phone_Number");
-					username =  new JLabel("UserName");
+		name =  new JLabel("Όνομα");
+			surname = new JLabel("Επίθετο");
+				phone_number =  new JLabel("Τηλέφωνο");
+					username =  new JLabel("Username");
 						password = new JLabel("Password");
-							Gender = new JLabel("Gender");
-								Infos =  new JLabel(" Insert following info's");
+							Gender = new JLabel("Φύλο");
+								Infos =  new JLabel(" Καταχώρηση Στοιχείων Υπαλλήλου");
 								
 		//JButton
-		create =  new JButton("CREATE");
-			back =  new JButton("Back");
-				exit =  new JButton("Exit");
+		create =  new JButton("Δημιουργία");
+			back =  new JButton("Πίσω");
 		
 		//JTextField
 		Name =  new JTextField();	
@@ -114,7 +113,6 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		
 		//Panel5
 			Panel5.add(back,BorderLayout.WEST);
-				Panel5.add(exit,BorderLayout.EAST);
 		
 		//συνδεση μεταξυ Panels
 		//συνδεση του panel1 με το κυριο Panel
@@ -132,7 +130,6 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		
 		create.addActionListener(this);
 		back.addActionListener(this);
-		exit.addActionListener(this);
 		ImageIcon  icon = new ImageIcon("cinema_logo.jpg");
 		
 		this.setSize(350,350);
@@ -156,13 +153,9 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		{
 			Database.allCredentials.put(userID, password);
 //			idandPasswords.AddInfo(userID, password);
-			JOptionPane.showMessageDialog(null,"Ο υπάλληλος προστέθηκε με επιτυχία.");
+			JOptionPane.showMessageDialog(null,"Ο υπάλληλος προστέθηκε με επιτυχία");
 		}
 		if(e.getSource().equals(back))
-		{
-			frame.dispose();
-		}
-		if(e.getSource().equals(exit))
 		{
 			frame.dispose();
 		}

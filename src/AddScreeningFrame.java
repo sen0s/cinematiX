@@ -32,7 +32,7 @@ public class AddScreeningFrame  extends JFrame {
 		Month = new JComboBox<>();
 		Rooms = new JComboBox<>();
 
-		Tile =  new JLabel("ΣΥΜΠΛΗΡΩΣΕ ΤΑ ΠΑΡΑΚΑΤΩ ΣΤΟΙΧΕΙΑ");
+		Tile =  new JLabel("Συμπληρώστε τα παρακάτω στοιχεία");
 		panel.add(Tile);
 		Tile.setBounds(120,10,250,25);
 		
@@ -150,7 +150,7 @@ public class AddScreeningFrame  extends JFrame {
 		this.setContentPane(panel);
 		this.setVisible(true);
 		this.setResizable(false);
-		this.setTitle("Παράθυρο Υπαλλήλου");
+		this.setTitle("Προσθήκη Προβολής");
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
 	}
