@@ -7,7 +7,8 @@ import javax.swing.border.Border;
 public class DeleteEmployeeFrame extends JFrame implements ActionListener {
 	private JButton DELETE,Back;
 	private JLabel Username,Password,Title;
-	private JTextField UserName1,Password1;
+	private JTextField UserName1;
+	private JPasswordField Password1;
 	private JPanel Panel,panel1,panel2,panel3;
 	private JFrame frame = this;
 	
@@ -28,7 +29,7 @@ public class DeleteEmployeeFrame extends JFrame implements ActionListener {
 			
 			
 		UserName1= new JTextField(30);
-		Password1 = new JTextField(30);
+		Password1 = new JPasswordField(30);
 			
 		panel1.setBackground(Color.white);
 		panel1.add(Title,panel1.CENTER_ALIGNMENT);
@@ -47,7 +48,7 @@ public class DeleteEmployeeFrame extends JFrame implements ActionListener {
 		panel3.add(Back,BorderLayout.WEST);
 		Panel.add(panel3,BorderLayout.SOUTH);
 
-
+		DELETE.addActionListener(this);
 		Back.addActionListener(this);
 		
 		
@@ -66,7 +67,7 @@ public class DeleteEmployeeFrame extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String userID = UserName1.getText();
-		String password = Password1.getText();
+		String password = String.valueOf(Password1.getPassword());
 		if (e.getSource().equals(DELETE)){
 			if(Database.allCredentials.containsKey(userID)) {
 				if(Database.allCredentials.get(userID).equals(password)) {
