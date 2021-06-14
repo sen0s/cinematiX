@@ -20,7 +20,6 @@ public class AddMovieFrame extends JInternalFrame {
 
         JFrame frame = new JFrame("Εισαγωγή ταινίας");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(550, 300));
         frame.getContentPane().setBackground(new Color(6, 62, 53));
         frame.pack();
