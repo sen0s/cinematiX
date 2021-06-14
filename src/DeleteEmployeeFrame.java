@@ -72,6 +72,7 @@ public class DeleteEmployeeFrame extends JFrame implements ActionListener {
 			if(Database.allCredentials.containsKey(userID)) {
 				if(Database.allCredentials.get(userID).equals(password)) {
 					Database.allCredentials.remove(userID);
+					Database.storeData();
 					JOptionPane.showMessageDialog(null,"Ο υπάλληλος διαγράφηκε επιτυχώς");
 				}
 				else {

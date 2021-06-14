@@ -80,6 +80,7 @@ public class AddMovieFrame extends JInternalFrame {
                     newMovie = new Movie(title,duration,genre);
 
                     Database.allMovies.add(newMovie);
+                    Database.storeData();
 
                     JOptionPane.showMessageDialog(null, "Η ταινία καταχωρήθηκε επιτυχώς");
 

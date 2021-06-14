@@ -63,6 +63,7 @@ public class AddRoomFrame extends JFrame {
                 String roomID = roomIDField.getText();
                 int roomCapacity = Integer.parseInt(roomCapacityField.getText());
                 Database.allRooms.add(new Room(roomID, roomCapacity));
+                Database.storeData();
                 JOptionPane.showMessageDialog(null, "Η αίθουσα δημιουργήθηκε επιτυχώς");
             }
             if (e.getSource().equals(back)){

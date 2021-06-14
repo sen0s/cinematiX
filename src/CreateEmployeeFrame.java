@@ -152,7 +152,7 @@ public class CreateEmployeeFrame extends JFrame implements ActionListener {
 		if (e.getSource().equals(create))
 		{
 			Database.allCredentials.put(userID, password);
-//			idandPasswords.AddInfo(userID, password);
+			Database.storeData();
 			JOptionPane.showMessageDialog(null,"Ο υπάλληλος προστέθηκε με επιτυχία");
 		}
 		if(e.getSource().equals(back))

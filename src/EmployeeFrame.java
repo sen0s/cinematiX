@@ -1,13 +1,15 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.*;
 
 public class EmployeeFrame extends JFrame {
 	JLabel AddScreening,DeleteScreening,newMovieLabel, newReservationLabel, delReservationLabel, delMovieLabel;
 	JButton newMovieBtn,AddScreeeningBtn,DelScreeningBtn,newReservationBtn, delReservationBtn, delMovieBtn, logoutBtn;
 	JPanel panel;
-	JFrame JFrame = this;
+	JFrame frame = this;
 	
 
 	EmployeeFrame(){
@@ -92,7 +94,15 @@ public class EmployeeFrame extends JFrame {
 		this.setResizable(false);
 		this.setTitle("Παράθυρο Υπαλλήλου");
 		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
+		this.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
+
+		this.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				Database.storeData();
+			}
+		});
+
 	}
 	
 
@@ -107,7 +117,7 @@ public class EmployeeFrame extends JFrame {
 				new BookTicketFrame();
 			}
 			if ( e.getSource().equals(delReservationBtn) ) {
-				
+				new DeleteReservationFrame();
 			}
 			if ( e.getSource().equals(delMovieBtn) ) {
 				new DeleteMovieFrame();
@@ -119,7 +129,7 @@ public class EmployeeFrame extends JFrame {
 				new DeleteScreeningFrame();
 			}
 			if ( e.getSource().equals(logoutBtn) ) {
-				JFrame.dispose();
+				frame.dispose();
 			}
 		
 		}

@@ -56,6 +56,7 @@ public class DeleteMovieFrame extends JFrame {
                     for(int i = 0; i< Database.allMovies.size(); i++){
                         if(Database.allMovies.get(i).getTitle() == title){
                             Database.allMovies.remove(i);
+                            Database.storeData();
                             JOptionPane.showMessageDialog(null, "Η ταινία διαγράφηκε επιτυχώς");
                         }
                     }

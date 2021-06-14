@@ -121,8 +121,7 @@ public class Database {
             credentialsIn.close();
         }
         catch(IOException i) {
-            System.out.println("An error occured when reading Data...");
-            //i.printStackTrace();
+            i.printStackTrace();
         }
         catch(ClassNotFoundException e) {
             e.printStackTrace();

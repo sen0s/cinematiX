@@ -122,8 +122,9 @@ public class AddScreeningFrame  extends JFrame {
 								if(flag==0) {
 									moviesel.AddScreening(datesel1, roomsel);
 									roomsel.AddDateScreening(datesel1);
-										JOptionPane.showMessageDialog(null, "Επιτυχής προσθήκη προβολής");
-										dispose();
+									Database.storeData();
+									JOptionPane.showMessageDialog(null, "Επιτυχής προσθήκη προβολής");
+									dispose();
 								}
 								else {
 									JOptionPane.showMessageDialog(null,"Υπάρχη προβολή στην Αίθουσα την συγκεκριμένη ημερομηνία");

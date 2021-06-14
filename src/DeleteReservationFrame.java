@@ -89,6 +89,7 @@ public class DeleteReservationFrame extends JFrame {
 					seats.setText(Integer.toString(Reservation1.getSeatNumber()));
 					System.out.println(Reservation1);
 					Database.allReservations.remove(Reservation1);
+					Database.storeData();
 					JOptionPane.showMessageDialog(null,"Επυτυχής Διαγραφή");
 					new EmployeeFrame();
 		}catch(Exception e1) {

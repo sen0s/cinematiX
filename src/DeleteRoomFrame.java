@@ -60,6 +60,7 @@ public class DeleteRoomFrame extends JFrame {
                     if (ID.equals(r.getRoomID())){
                         Database.allRooms.remove(r);
                         comboBox.removeItem(ID);
+                        Database.storeData();
                         JOptionPane.showMessageDialog(null, "Η αίθουσα διαγράφηκε επιτυχώς");
                         break;
                     }

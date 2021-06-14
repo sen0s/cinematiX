@@ -84,6 +84,7 @@ public class DeleteScreeningFrame extends JFrame {
 					String Date = (String)Dates.getSelectedItem();
 					System.out.println(Date);
 					MovieSel.delscreen(Date);
+					Database.storeData();
 					JOptionPane.showMessageDialog(null,"Επυτυχής Διαγραφή");
 					new EmployeeFrame();
 		}catch(Exception e1) {
