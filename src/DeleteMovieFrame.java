@@ -6,41 +6,48 @@ import java.util.ArrayList;
 
 public class DeleteMovieFrame extends JFrame {
 
+    public static void main(String[] args) {
+        new DeleteMovieFrame();
+    }
+
     private ArrayList<String> moviesTitle = new ArrayList<>();
-    
+
     public DeleteMovieFrame(){
 
         for (int i = 0; i< Database.allMovies.size(); i++){
             moviesTitle.add(Database.allMovies.get(i).getTitle());
         }
 
-        JFrame frame = new JFrame("Διαγραφή Ταινίας");
-        frame.setSize(500, 250);
+        JFrame frame = new JFrame("Διαγραφή ταινίας");
+        frame.setPreferredSize(new Dimension(550, 200));
+        frame.getContentPane().setBackground(new Color(6, 62, 53));
+        frame.setSize(500, 300);
         frame.setLocation(450, 250);
         JPanel panel = (JPanel) frame.getContentPane();
         panel.setLayout(null);
 
-        JLabel label1 = new JLabel("Τίτλος Ταινίας: ");
-        label1.setFont(new Font("Verdana", Font.PLAIN, 20));
+        JLabel label1 = new JLabel("Τίτλος ταινίας: ");
+        label1.setFont(new Font("title", Font.BOLD, 20));
+        label1.setForeground(new Color(150, 90, 40));
         panel.add(label1);
         Dimension size1 = label1.getPreferredSize();
-        label1.setBounds(20, 25, size1.width, size1.height);
+        label1.setBounds(20, 35, size1.width, size1.height);
 
         JButton DeleteButton = new JButton("Διαγραφή");
-        DeleteButton.setLocation(330, 150);
+        DeleteButton.setLocation(350, 33);
         DeleteButton.setSize(100, 30);
         panel.add(DeleteButton);
 
 
         JButton buttonBack = new JButton("Πίσω");
-        buttonBack.setLocation(20, 150);
+        buttonBack.setLocation(25, 150);
         buttonBack.setSize(100, 30);
         panel.add(buttonBack);
 
         String[] array = moviesTitle.toArray(new String[Database.allMovies.size()]);
 
         JComboBox comboBox = new JComboBox(array);
-        comboBox.setLocation(170, 25);
+        comboBox.setLocation(170, 35);
         comboBox.setSize(150, 25);
         panel.add(comboBox);
 
@@ -57,7 +64,8 @@ public class DeleteMovieFrame extends JFrame {
                         if(Database.allMovies.get(i).getTitle() == title){
                             Database.allMovies.remove(i);
                             Database.storeData();
-                            JOptionPane.showMessageDialog(null, "Η ταινία διαγράφηκε επιτυχώς");
+                            JOptionPane.showMessageDialog(null, "\n" +
+                                    "Η ταινία διαγράφηκε με επιτυχία");
                         }
                     }
 
